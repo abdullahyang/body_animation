@@ -106,41 +106,6 @@ Eigen::Matrix<double, 24, 3> CalculateJointPosition(const double* poseParameters
 }
 
 
-class SmplCostFunction : public CostFunction {
-public:
-    SmplCostFunction(const vector<Keypoint>& keypoints, const CameraParams& camParams)
-        : keypoints_(keypoints), camParams_(camParams) {
-        set_num_residuals(1);
-        mutable_parameter_block_sizes()->push_back(82);
-    }
-
-    bool operator()(const double* const parameters, double* residuals) {
-        int OpenPoseMapping[14] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
-        int SMPLMapping[14] = {12, 17, 19, 21, 16, 18, 20, 0, 2, 5, 6, 1, 4, 7};
-        residuals[0] = 0;
-        const double* poseParameters = parameters;
-        const double* shapeParameters = parameters + 72;
-        CalculateJointPosition(poseParameters, shapeParameters);
-        CameraParams camParams_ = camParams;
-        vector<Keypoint> keypoints_ = keypoints;
-        for (int i = 0; i < 14; i++)
-        {
-            Vector3d jointPosition3D = jointPositions.row(SMPLMapping[i]);
-            std::cout << "Joint Position 3D: " << jointPosition3D.transpose() << std::endl;
-            Vector3d projected = camParams_.intrinsicMatrix.cast<double>() * (camParams_.rotationMatrix.cast<double>() * jointPosition3D + camParams_.translation.cast<double>());
-            Vector2d jointPosition2D(projected(0) / projected(2), projected(1) / projected(2));
-            std::cout << "Joint Position 2D: " << jointPosition2D.transpose() << std::endl;
-            std::cout << "GT: " << keypoints_[OpenPoseMapping[i]].x << " " << keypoints_[OpenPoseMapping[i]].y << std::endl;
-            residuals[0] += keypoints_[OpenPoseMapping[i]].confidence * sqrt((jointPosition2D.x() - keypoints_[OpenPoseMapping[i]].x) * (jointPosition2D.x() - keypoints_[OpenPoseMapping[i]].x) + (jointPosition2D.y() - keypoints_[OpenPoseMapping[i]].y) * (jointPosition2D.y() - keypoints_[OpenPoseMapping[i]].y));
-        }
-        return true;
-    }
-
-private:
-    vector<Keypoint> keypoints_;
-    CameraParams camParams_;
-};
-
 struct SmplCostFunctor {
     SmplCostFunctor(const std::vector<Keypoint>& keypoints, const CameraParams& camParams)
         : keypoints_(keypoints), camParams_(camParams) {}
