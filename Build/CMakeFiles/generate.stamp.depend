@@ -1,0 +1,45 @@
+# CMake generation dependency list for this directory.
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeCXXInformation.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeGenericSystem.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeRCInformation.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckIncludeFile.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CheckLibraryExists.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Compiler/MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Compiler/MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Compiler/MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindThreads.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/Windows-Initialize.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/Windows-MSVC-C.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/Windows-MSVC-CXX.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/Windows-MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/Windows.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/WindowsPaths.cmake
+D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres/CeresConfig.cmake
+D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres/CeresConfigVersion.cmake
+D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres/CeresTargets-debug.cmake
+D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres/CeresTargets-release.cmake
+D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres/CeresTargets.cmake
+D:/TUM/3DSMC/exercise/Libs/eigen-3.4.0/eigen-3.4.0/Build/Eigen3Config.cmake
+D:/TUM/3DSMC/exercise/Libs/eigen-3.4.0/eigen-3.4.0/Build/Eigen3ConfigVersion.cmake
+D:/TUM/3DSMC/exercise/Libs/eigen-3.4.0/eigen-3.4.0/Build/Eigen3Targets.cmake
+D:/TUM/3DSMC/exercise/Libs/glog-0.5.0/Build/glog-config-version.cmake
+D:/TUM/3DSMC/exercise/Libs/glog-0.5.0/Build/glog-config.cmake
+D:/TUM/3DSMC/exercise/Libs/glog-0.5.0/Build/glog-modules.cmake
+D:/TUM/3DSMC/exercise/Libs/glog-0.5.0/Build/glog-targets.cmake
+D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/3.28.0-rc2/CMakeCCompiler.cmake
+D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/3.28.0-rc2/CMakeCXXCompiler.cmake
+D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/3.28.0-rc2/CMakeRCCompiler.cmake
+D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/3.28.0-rc2/CMakeSystem.cmake
+D:/TUM/3DSMC/project/body_animation/CMakeLists.txt

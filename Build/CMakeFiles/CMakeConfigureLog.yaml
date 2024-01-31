@@ -1,0 +1,410 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake:233 (message)"
+      - "CMakeLists.txt:4 (project)"
+    message: |
+      The system is: Windows - 10.0.22631 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:4 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      适用于 .NET Framework MSBuild 版本 17.7.2+d6990bcfa
+      生成启动时间为 2024/1/30 23:44:15。
+      
+      节点 1 上的项目“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\3.28.0-rc2\\CompilerIdC\\CompilerIdC.vcxproj”(默认目标)。
+      PrepareForBuild:
+        正在创建目录“Debug\\”。
+        正在创建目录“Debug\\CompilerIdC.tlog\\”。
+      InitializeBuildStatus:
+        正在创建“Debug\\CompilerIdC.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+        正在对“Debug\\CompilerIdC.tlog\\unsuccessfulbuild”执行 Touch 任务。
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+        CMakeCCompilerId.c
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
+        CompilerIdC.vcxproj -> D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\3.28.0-rc2\\CompilerIdC\\CompilerIdC.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_C_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        正在删除文件“Debug\\CompilerIdC.tlog\\unsuccessfulbuild”。
+        正在对“Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate”执行 Touch 任务。
+      已完成生成项目“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\3.28.0-rc2\\CompilerIdC\\CompilerIdC.vcxproj”(默认目标)的操作。
+      
+      已成功生成。
+          0 个警告
+          0 个错误
+      
+      已用时间 00:00:02.36
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+      
+      The C compiler identification is MSVC, found in:
+        D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/3.28.0-rc2/CompilerIdC/CompilerIdC.exe
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:4 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      适用于 .NET Framework MSBuild 版本 17.7.2+d6990bcfa
+      生成启动时间为 2024/1/30 23:44:17。
+      
+      节点 1 上的项目“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\3.28.0-rc2\\CompilerIdCXX\\CompilerIdCXX.vcxproj”(默认目标)。
+      PrepareForBuild:
+        正在创建目录“Debug\\”。
+        正在创建目录“Debug\\CompilerIdCXX.tlog\\”。
+      InitializeBuildStatus:
+        正在创建“Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+        正在对“Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild”执行 Touch 任务。
+      ClCompile:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        CMakeCXXCompilerId.cpp
+      Link:
+        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+        CompilerIdCXX.vcxproj -> D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\3.28.0-rc2\\CompilerIdCXX\\CompilerIdCXX.exe
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_CXX_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        正在删除文件“Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild”。
+        正在对“Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate”执行 Touch 任务。
+      已完成生成项目“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\3.28.0-rc2\\CompilerIdCXX\\CompilerIdCXX.vcxproj”(默认目标)的操作。
+      
+      已成功生成。
+          0 个警告
+          0 个错误
+      
+      已用时间 00:00:00.42
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+      
+      The CXX compiler identification is MSVC, found in:
+        D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/3.28.0-rc2/CompilerIdCXX/CompilerIdCXX.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:4 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-az9y0u"
+      binary: "D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-az9y0u"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-az9y0u'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_4e381.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        适用于 .NET Framework MSBuild 版本 17.7.2+d6990bcfa
+        生成启动时间为 2024/1/30 23:44:18。
+        
+        节点 1 上的项目“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-az9y0u\\cmTC_4e381.vcxproj”(默认目标)。
+        PrepareForBuild:
+          正在创建目录“cmTC_4e381.dir\\Debug\\”。
+          正在创建目录“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-az9y0u\\Debug\\”。
+          正在创建目录“cmTC_4e381.dir\\Debug\\cmTC_4e381.tlog\\”。
+        InitializeBuildStatus:
+          正在创建“cmTC_4e381.dir\\Debug\\cmTC_4e381.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+          正在对“cmTC_4e381.dir\\Debug\\cmTC_4e381.tlog\\unsuccessfulbuild”执行 Touch 任务。
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4e381.dir\\Debug\\\\" /Fd"cmTC_4e381.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32825 for x64
+          CMakeCCompilerABI.c
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4e381.dir\\Debug\\\\" /Fd"cmTC_4e381.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCCompilerABI.c"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-az9y0u\\Debug\\cmTC_4e381.exe" /INCREMENTAL /ILK:"cmTC_4e381.dir\\Debug\\cmTC_4e381.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-az9y0u/Debug/cmTC_4e381.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-az9y0u/Debug/cmTC_4e381.lib" /MACHINE:X64  /machine:x64 cmTC_4e381.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_4e381.vcxproj -> D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-az9y0u\\Debug\\cmTC_4e381.exe
+        FinalizeBuildStatus:
+          正在删除文件“cmTC_4e381.dir\\Debug\\cmTC_4e381.tlog\\unsuccessfulbuild”。
+          正在对“cmTC_4e381.dir\\Debug\\cmTC_4e381.tlog\\cmTC_4e381.lastbuildstate”执行 Touch 任务。
+        已完成生成项目“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-az9y0u\\cmTC_4e381.vcxproj”(默认目标)的操作。
+        
+        已成功生成。
+            0 个警告
+            0 个错误
+        
+        已用时间 00:00:00.43
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:4 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-8kzi4e"
+      binary: "D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-8kzi4e"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-8kzi4e'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_50374.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        适用于 .NET Framework MSBuild 版本 17.7.2+d6990bcfa
+        生成启动时间为 2024/1/30 23:44:19。
+        
+        节点 1 上的项目“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-8kzi4e\\cmTC_50374.vcxproj”(默认目标)。
+        PrepareForBuild:
+          正在创建目录“cmTC_50374.dir\\Debug\\”。
+          正在创建目录“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-8kzi4e\\Debug\\”。
+          正在创建目录“cmTC_50374.dir\\Debug\\cmTC_50374.tlog\\”。
+        InitializeBuildStatus:
+          正在创建“cmTC_50374.dir\\Debug\\cmTC_50374.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+          正在对“cmTC_50374.dir\\Debug\\cmTC_50374.tlog\\unsuccessfulbuild”执行 Touch 任务。
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_50374.dir\\Debug\\\\" /Fd"cmTC_50374.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32825 for x64
+          CMakeCXXCompilerABI.cpp
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_50374.dir\\Debug\\\\" /Fd"cmTC_50374.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.28\\Modules\\CMakeCXXCompilerABI.cpp"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-8kzi4e\\Debug\\cmTC_50374.exe" /INCREMENTAL /ILK:"cmTC_50374.dir\\Debug\\cmTC_50374.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-8kzi4e/Debug/cmTC_50374.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-8kzi4e/Debug/cmTC_50374.lib" /MACHINE:X64  /machine:x64 cmTC_50374.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_50374.vcxproj -> D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-8kzi4e\\Debug\\cmTC_50374.exe
+        FinalizeBuildStatus:
+          正在删除文件“cmTC_50374.dir\\Debug\\cmTC_50374.tlog\\unsuccessfulbuild”。
+          正在对“cmTC_50374.dir\\Debug\\cmTC_50374.tlog\\cmTC_50374.lastbuildstate”执行 Touch 任务。
+        已完成生成项目“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-8kzi4e\\cmTC_50374.vcxproj”(默认目标)的操作。
+        
+        已成功生成。
+            0 个警告
+            0 个错误
+        
+        已用时间 00:00:00.41
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres/CeresConfig.cmake:183 (find_dependency)"
+      - "CMakeLists.txt:12 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-lcatgz"
+      binary: "D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-lcatgz"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-lcatgz'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_6bd23.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        适用于 .NET Framework MSBuild 版本 17.7.2+d6990bcfa
+        生成启动时间为 2024/1/30 23:46:44。
+        
+        节点 1 上的项目“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-lcatgz\\cmTC_6bd23.vcxproj”(默认目标)。
+        PrepareForBuild:
+          正在创建目录“cmTC_6bd23.dir\\Debug\\”。
+          正在创建目录“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-lcatgz\\Debug\\”。
+          正在创建目录“cmTC_6bd23.dir\\Debug\\cmTC_6bd23.tlog\\”。
+        InitializeBuildStatus:
+          正在创建“cmTC_6bd23.dir\\Debug\\cmTC_6bd23.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+          正在对“cmTC_6bd23.dir\\Debug\\cmTC_6bd23.tlog\\unsuccessfulbuild”执行 Touch 任务。
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6bd23.dir\\Debug\\\\" /Fd"cmTC_6bd23.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-lcatgz\\src.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32825 for x64
+          src.c
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_6bd23.dir\\Debug\\\\" /Fd"cmTC_6bd23.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-lcatgz\\src.c"
+        D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-lcatgz\\src.c(1,10): fatal  error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-lcatgz\\cmTC_6bd23.vcxproj]
+        已完成生成项目“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-lcatgz\\cmTC_6bd23.vcxproj”(默认目标)的操作 - 失败。
+        
+        生成失败。
+        
+        “D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-lcatgz\\cmTC_6bd23.vcxproj”(默认目标) (1) ->
+        (ClCompile 目标) -> 
+          D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-lcatgz\\src.c(1,10): fatal  error C1083: Cannot open include file: 'pthread.h': No such file or directory [D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-lcatgz\\cmTC_6bd23.vcxproj]
+        
+            0 个警告
+            1 个错误
+        
+        已用时间 00:00:00.37
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/FindThreads.cmake:175 (_threads_check_lib)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres/CeresConfig.cmake:183 (find_dependency)"
+      - "CMakeLists.txt:12 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthreads"
+    directories:
+      source: "D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-661ob3"
+      binary: "D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-661ob3"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREADS_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-661ob3'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_3a74a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        适用于 .NET Framework MSBuild 版本 17.7.2+d6990bcfa
+        生成启动时间为 2024/1/30 23:46:45。
+        
+        节点 1 上的项目“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-661ob3\\cmTC_3a74a.vcxproj”(默认目标)。
+        PrepareForBuild:
+          正在创建目录“cmTC_3a74a.dir\\Debug\\”。
+          正在创建目录“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-661ob3\\Debug\\”。
+          正在创建目录“cmTC_3a74a.dir\\Debug\\cmTC_3a74a.tlog\\”。
+        InitializeBuildStatus:
+          正在创建“cmTC_3a74a.dir\\Debug\\cmTC_3a74a.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+          正在对“cmTC_3a74a.dir\\Debug\\cmTC_3a74a.tlog\\unsuccessfulbuild”执行 Touch 任务。
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_3a74a.dir\\Debug\\\\" /Fd"cmTC_3a74a.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-661ob3\\CheckFunctionExists.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32825 for x64
+          CheckFunctionExists.c
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_3a74a.dir\\Debug\\\\" /Fd"cmTC_3a74a.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-661ob3\\CheckFunctionExists.c"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-661ob3\\Debug\\cmTC_3a74a.exe" /INCREMENTAL /ILK:"cmTC_3a74a.dir\\Debug\\cmTC_3a74a.ilk" /NOLOGO pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-661ob3/Debug/cmTC_3a74a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-661ob3/Debug/cmTC_3a74a.lib" /MACHINE:X64  /machine:x64 cmTC_3a74a.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-661ob3\\cmTC_3a74a.vcxproj]
+        已完成生成项目“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-661ob3\\cmTC_3a74a.vcxproj”(默认目标)的操作 - 失败。
+        
+        生成失败。
+        
+        “D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-661ob3\\cmTC_3a74a.vcxproj”(默认目标) (1) ->
+        (Link 目标) -> 
+          LINK : fatal error LNK1104: cannot open file 'pthreads.lib' [D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-661ob3\\cmTC_3a74a.vcxproj]
+        
+            0 个警告
+            1 个错误
+        
+        已用时间 00:00:00.32
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/FindThreads.cmake:176 (_threads_check_lib)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres/CeresConfig.cmake:183 (find_dependency)"
+      - "CMakeLists.txt:12 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthread"
+    directories:
+      source: "D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-wfp824"
+      binary: "D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-wfp824"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS /W3"
+      CMAKE_C_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREAD_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-wfp824'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_60b24.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        适用于 .NET Framework MSBuild 版本 17.7.2+d6990bcfa
+        生成启动时间为 2024/1/30 23:46:45。
+        
+        节点 1 上的项目“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-wfp824\\cmTC_60b24.vcxproj”(默认目标)。
+        PrepareForBuild:
+          正在创建目录“cmTC_60b24.dir\\Debug\\”。
+          正在创建目录“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-wfp824\\Debug\\”。
+          正在创建目录“cmTC_60b24.dir\\Debug\\cmTC_60b24.tlog\\”。
+        InitializeBuildStatus:
+          正在创建“cmTC_60b24.dir\\Debug\\cmTC_60b24.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+          正在对“cmTC_60b24.dir\\Debug\\cmTC_60b24.tlog\\unsuccessfulbuild”执行 Touch 任务。
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_60b24.dir\\Debug\\\\" /Fd"cmTC_60b24.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-wfp824\\CheckFunctionExists.c"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32825 for x64
+          CheckFunctionExists.c
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_60b24.dir\\Debug\\\\" /Fd"cmTC_60b24.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TC /errorReport:queue "D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-wfp824\\CheckFunctionExists.c"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-wfp824\\Debug\\cmTC_60b24.exe" /INCREMENTAL /ILK:"cmTC_60b24.dir\\Debug\\cmTC_60b24.ilk" /NOLOGO pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-wfp824/Debug/cmTC_60b24.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-wfp824/Debug/cmTC_60b24.lib" /MACHINE:X64  /machine:x64 cmTC_60b24.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-wfp824\\cmTC_60b24.vcxproj]
+        已完成生成项目“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-wfp824\\cmTC_60b24.vcxproj”(默认目标)的操作 - 失败。
+        
+        生成失败。
+        
+        “D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-wfp824\\cmTC_60b24.vcxproj”(默认目标) (1) ->
+        (Link 目标) -> 
+          LINK : fatal error LNK1104: cannot open file 'pthread.lib' [D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-wfp824\\cmTC_60b24.vcxproj]
+        
+            0 个警告
+            1 个错误
+        
+        已用时间 00:00:00.31
+        
+      exitCode: 1
+...
