@@ -13,6 +13,7 @@ find_package(Ceres REQUIRED)
 
 
 add_executable(SMPLModelOptimization main.cpp)
+include_directories(./include/)
 
 
 target_link_libraries(SMPLModelOptimization Eigen3::Eigen)

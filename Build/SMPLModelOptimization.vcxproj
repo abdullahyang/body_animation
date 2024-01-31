@@ -86,7 +86,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.\include;D:\TUM\3DSMC\project\body_animation\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "D:/TUM/3DSMC/exercise/Libs/eigen-3.4.0/eigen-3.4.0" /external:I "D:/TUM/3DSMC/exercise/Libs/Ceres/include" /external:I "D:/TUM/3DSMC/exercise/Libs/glog-0.5.0/Build" /external:I "D:/TUM/3DSMC/exercise/Libs/glog-0.5.0/src" /external:I "D:/TUM/3DSMC/exercise/Libs/glog-0.5.0/src/windows"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -106,10 +106,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;GLOG_NO_ABBREVIATED_SEVERITIES;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.;D:\TUM\3DSMC\exercise\Libs\eigen-3.4.0\eigen-3.4.0;D:\TUM\3DSMC\exercise\Libs\Ceres\include;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\Build;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.\include;D:\TUM\3DSMC\project\body_animation\.;D:\TUM\3DSMC\exercise\Libs\eigen-3.4.0\eigen-3.4.0;D:\TUM\3DSMC\exercise\Libs\Ceres\include;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\Build;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.;D:\TUM\3DSMC\exercise\Libs\eigen-3.4.0\eigen-3.4.0;D:\TUM\3DSMC\exercise\Libs\Ceres\include;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\Build;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.\include;D:\TUM\3DSMC\project\body_animation\.;D:\TUM\3DSMC\exercise\Libs\eigen-3.4.0\eigen-3.4.0;D:\TUM\3DSMC\exercise\Libs\Ceres\include;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\Build;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -132,7 +132,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.\include;D:\TUM\3DSMC\project\body_animation\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "D:/TUM/3DSMC/exercise/Libs/eigen-3.4.0/eigen-3.4.0" /external:I "D:/TUM/3DSMC/exercise/Libs/Ceres/include" /external:I "D:/TUM/3DSMC/exercise/Libs/glog-0.5.0/Build" /external:I "D:/TUM/3DSMC/exercise/Libs/glog-0.5.0/src" /external:I "D:/TUM/3DSMC/exercise/Libs/glog-0.5.0/src/windows"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -152,10 +152,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLOG_NO_ABBREVIATED_SEVERITIES;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.;D:\TUM\3DSMC\exercise\Libs\eigen-3.4.0\eigen-3.4.0;D:\TUM\3DSMC\exercise\Libs\Ceres\include;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\Build;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.\include;D:\TUM\3DSMC\project\body_animation\.;D:\TUM\3DSMC\exercise\Libs\eigen-3.4.0\eigen-3.4.0;D:\TUM\3DSMC\exercise\Libs\Ceres\include;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\Build;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.;D:\TUM\3DSMC\exercise\Libs\eigen-3.4.0\eigen-3.4.0;D:\TUM\3DSMC\exercise\Libs\Ceres\include;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\Build;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.\include;D:\TUM\3DSMC\project\body_animation\.;D:\TUM\3DSMC\exercise\Libs\eigen-3.4.0\eigen-3.4.0;D:\TUM\3DSMC\exercise\Libs\Ceres\include;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\Build;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -178,7 +178,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.\include;D:\TUM\3DSMC\project\body_animation\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "D:/TUM/3DSMC/exercise/Libs/eigen-3.4.0/eigen-3.4.0" /external:I "D:/TUM/3DSMC/exercise/Libs/Ceres/include" /external:I "D:/TUM/3DSMC/exercise/Libs/glog-0.5.0/Build" /external:I "D:/TUM/3DSMC/exercise/Libs/glog-0.5.0/src" /external:I "D:/TUM/3DSMC/exercise/Libs/glog-0.5.0/src/windows"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>Sync</ExceptionHandling>
@@ -198,10 +198,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLOG_NO_ABBREVIATED_SEVERITIES;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.;D:\TUM\3DSMC\exercise\Libs\eigen-3.4.0\eigen-3.4.0;D:\TUM\3DSMC\exercise\Libs\Ceres\include;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\Build;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.\include;D:\TUM\3DSMC\project\body_animation\.;D:\TUM\3DSMC\exercise\Libs\eigen-3.4.0\eigen-3.4.0;D:\TUM\3DSMC\exercise\Libs\Ceres\include;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\Build;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.;D:\TUM\3DSMC\exercise\Libs\eigen-3.4.0\eigen-3.4.0;D:\TUM\3DSMC\exercise\Libs\Ceres\include;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\Build;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.\include;D:\TUM\3DSMC\project\body_animation\.;D:\TUM\3DSMC\exercise\Libs\eigen-3.4.0\eigen-3.4.0;D:\TUM\3DSMC\exercise\Libs\Ceres\include;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\Build;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
@@ -224,7 +224,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.\include;D:\TUM\3DSMC\project\body_animation\.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>%(AdditionalOptions) /external:I "D:/TUM/3DSMC/exercise/Libs/eigen-3.4.0/eigen-3.4.0" /external:I "D:/TUM/3DSMC/exercise/Libs/Ceres/include" /external:I "D:/TUM/3DSMC/exercise/Libs/glog-0.5.0/Build" /external:I "D:/TUM/3DSMC/exercise/Libs/glog-0.5.0/src" /external:I "D:/TUM/3DSMC/exercise/Libs/glog-0.5.0/src/windows"</AdditionalOptions>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -243,10 +243,10 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;GLOG_NO_ABBREVIATED_SEVERITIES;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.;D:\TUM\3DSMC\exercise\Libs\eigen-3.4.0\eigen-3.4.0;D:\TUM\3DSMC\exercise\Libs\Ceres\include;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\Build;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.\include;D:\TUM\3DSMC\project\body_animation\.;D:\TUM\3DSMC\exercise\Libs\eigen-3.4.0\eigen-3.4.0;D:\TUM\3DSMC\exercise\Libs\Ceres\include;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\Build;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.;D:\TUM\3DSMC\exercise\Libs\eigen-3.4.0\eigen-3.4.0;D:\TUM\3DSMC\exercise\Libs\Ceres\include;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\Build;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\TUM\3DSMC\project\body_animation\.\include;D:\TUM\3DSMC\project\body_animation\.;D:\TUM\3DSMC\exercise\Libs\eigen-3.4.0\eigen-3.4.0;D:\TUM\3DSMC\exercise\Libs\Ceres\include;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\Build;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src;D:\TUM\3DSMC\exercise\Libs\glog-0.5.0\src\windows;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>

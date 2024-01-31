@@ -33,18 +33,32 @@ def get_joint_locations(smpl_layer, pose_params, shape_params):
     return Jtr.squeeze(0)
 
 if __name__ == '__main__':
-    for i in range(0,len(sys.argv)):
-        print(sys.argv[i])
+    torch.set_printoptions(sci_mode=False)
     # Example usage
     # model_path = './code/models/' # Update this path
     # model_path = 'basicModel_neutral_lbs_10_207_0_v1.0.0.pkl'
-    model_path = './'
+    model_path = '../data/model'
     smpl_layer = load_smpl_model(model_path)
-
+    pose_input = str(sys.argv[1]).split(',')
+    
+    pose_params = []
+    shape_params = []
+    for param in pose_input:
+        pose_params.append(float(param))
+    
+    shape_input = sys.argv[2].split(',')
+    for param in shape_input:
+        shape_params.append(float(param))
     # Random pose and shape parameters (you will replace these with your own)
-    pose_params = torch.randn(72)
-    shape_params = torch.randn(10)
+    pose_params = torch.Tensor(pose_params)
+    shape_params = torch.Tensor(shape_params)
 
     # Get joint locations
     joint_locations = get_joint_locations(smpl_layer, pose_params, shape_params)
-    print(joint_locations)
+    
+    numbers = []
+    for row in joint_locations:
+        for number in row:
+            numbers.append(float(number))
+
+    print(numbers)
