@@ -114,11 +114,9 @@ struct SmplCostFunctor {
         int OpenPoseMapping[14] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
         int SMPLMapping[14] = { 12, 17, 19, 21, 16, 18, 20, 0, 2, 5, 6, 1, 4, 7 };
         residuals[0] = 0;
-        const double* poseParameters = parameters;
-        const double* shapeParameters = parameters + 72;
-        CalculateJointPosition(poseParameters, shapeParameters);
-        //CameraParams camParams_ = camParams;
-        //vector<Keypoint> keypoints_ = keypoints;
+        //const double* poseParameters = parameters;
+        //const double* shapeParameters = parameters + 72;
+        jointPositions = CalculateJointPosition(parameters, parameters + 72);
         for (int i = 0; i < 14; i++)
         {
             Vector3d jointPosition3D = jointPositions.row(SMPLMapping[i]);
@@ -129,6 +127,25 @@ struct SmplCostFunctor {
             //std::cout << "GT: " << keypoints_[OpenPoseMapping[i]].x << " " << keypoints_[OpenPoseMapping[i]].y << std::endl;
             residuals[0] += keypoints_[OpenPoseMapping[i]].confidence * sqrt((jointPosition2D.x() - keypoints_[OpenPoseMapping[i]].x) * (jointPosition2D.x() - keypoints_[OpenPoseMapping[i]].x) + (jointPosition2D.y() - keypoints_[OpenPoseMapping[i]].y) * (jointPosition2D.y() - keypoints_[OpenPoseMapping[i]].y));
         }
+
+        // left toe
+        Vector3d jointPosition3Dt = jointPositions.row(SMPLMapping[10]);
+        Vector3d projectedt = camParams_.intrinsicMatrix.cast<double>() * (camParams_.rotationMatrix.cast<double>() * jointPosition3Dt + camParams_.translation.cast<double>());
+        Vector2d jointPosition2Dt(projectedt(0) / projectedt(2), projectedt(1) / projectedt(2));
+        double kpx = (keypoints_[19].x + keypoints_[20].x) / 2;
+        double kpy = (keypoints_[19].y + keypoints_[20].y) / 2;
+        double kpc = (keypoints_[19].confidence + keypoints_[20].confidence) / 2;
+        residuals[0] += kpc * sqrt((jointPosition2Dt.x() - kpx) * (jointPosition2Dt.x() - kpx) + (jointPosition2Dt.y() - kpy) * (jointPosition2Dt.y() - kpy));
+
+        // right toe
+        jointPosition3Dt = jointPositions.row(SMPLMapping[11]);
+        projectedt = camParams_.intrinsicMatrix.cast<double>() * (camParams_.rotationMatrix.cast<double>() * jointPosition3Dt + camParams_.translation.cast<double>());
+        jointPosition2Dt(projectedt(0) / projectedt(2), projectedt(1) / projectedt(2));
+        kpx = (keypoints_[22].x + keypoints_[23].x) / 2;
+        kpy = (keypoints_[22].y + keypoints_[23].y) / 2;
+        kpc = (keypoints_[22].confidence + keypoints_[23].confidence) / 2;
+        residuals[0] += kpc * sqrt((jointPosition2Dt.x() - kpx) * (jointPosition2Dt.x() - kpx) + (jointPosition2Dt.y() - kpy) * (jointPosition2Dt.y() - kpy));
+
         cout << residuals[0] << endl;
         cout << time(nullptr) << endl;
         return true;
@@ -183,15 +200,16 @@ int main() {
     double Parameters[82] = {0}; // 72 pose params + 10 shape params
     
     jointPositions = CalculateJointPosition(Parameters, Parameters+72);
-     
-
-    // CostFunction* cost_function = new SmplCostFunction(keypoints, camParams);
 
     //CostFunction* cost_function = new AutoDiffCostFunction<SmplCostFunctor, 1, 82>(
         //new SmplCostFunctor(keypoints, camParams));
-
+    ceres::NumericDiffOptions numeric_diff_options;
+    numeric_diff_options.ridders_relative_initial_step_size = 0.01;
+    // *** WHY CAN'T CHANGE STEP SIZE HERE? ***
     CostFunction* cost_function = new NumericDiffCostFunction<SmplCostFunctor, CENTRAL, 1, 82>(
         new SmplCostFunctor(keypoints, camParams), TAKE_OWNERSHIP);
+    //CostFunction* cost_function = new AutoDiffCostFunction<SmplCostFunctor, 1, 82>(
+    //    new SmplCostFunctor(keypoints, camParams));
 
     problem.AddResidualBlock(cost_function, nullptr, Parameters);
 
@@ -200,19 +218,19 @@ int main() {
     // TODO: add other cost functions according to the paper
 
     Solver::Options options;
-    options.linear_solver_type = DENSE_QR;
+    // options.linear_solver_type = DENSE_QR;
     options.minimizer_progress_to_stdout = true;
 
 
     Solver::Summary summary;
 
     ceres::Solve(options, &problem, &summary);
-    // cout << summary.FullReport() << endl;
+    cout << summary.FullReport() << endl;
  
     for (int i = 0; i < 82; ++i) {
         if (i < 72)
         {
-            // cout << "Pose parameter " << i << ": " << Parameters[i] << endl;
+            cout << "Pose parameter " << i << ": " << Parameters[i] << endl;
         }
         else cout << "Shape parameter " << i-72 << ": " << Parameters[i] << endl;
     }
