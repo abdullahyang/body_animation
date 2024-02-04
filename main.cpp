@@ -265,7 +265,7 @@ int main() {
         Py_Initialize();
     }
 
-    std::string filePath = "../data/EHF/20_2Djnt.json";
+    std::string filePath = "../data/EHF/01_2Djnt.json";
     cout << _getcwd(NULL, 0) << endl;
     // Read keypoints
     std::ifstream file(filePath);
@@ -339,7 +339,7 @@ int main() {
 
 
     int OpenPoseMapping[14] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
-    int SMPLMapping[14] = { 12, 17, 19, 21, 16, 18, 20, 0, 2, 5, 7, 1, 4, 8 };
+    int SMPLMapping[14] = { 12, 17, 19, 21, 16, 18, 20, 0, 2, 5, 8, 1, 4, 7 };
     jointPositions = CalculateJointPosition(Parameters, Parameters + 72);
     for (int i = 0; i < 14; i++)
     {
