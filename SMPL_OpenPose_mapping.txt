@@ -9,7 +9,7 @@ OpenPose,SMPL,name
 8,0,"MidHip"
 9,2,"RHip"
 10,5,"RKnee"
-11,6,"RAnkle"
+11,8,"RAnkle"
 12,1,"LHip"
 13,4,"LKnee"
 14,7,"LAnkle"
