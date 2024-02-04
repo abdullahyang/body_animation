@@ -9,13 +9,17 @@
 #include <sstream>
 #include <direct.h>
 #include <ctime>
+#include <Python.h>
+#include <math.h>
 
-Eigen::Matrix<double, 24, 3> jointPositions;
 using json = nlohmann::json;
 using namespace Eigen;
 using namespace std;
 using namespace ceres;
 
+double L2_Regularization_Lambda = 0.1;
+
+Eigen::Matrix<double, 24, 3> jointPositions;
 struct Keypoint {
     float x, y, confidence;
 };
@@ -86,14 +90,14 @@ Eigen::Matrix<double, 24, 3> parseJointPosition(std::string str)
     }
     return matrix;
 }
-
+/*
 Eigen::Matrix<double, 24, 3> CalculateJointPosition(const double* poseParameters, const double* shapeParameters)
 {
     std::string poseparams;
     std::string shapeparams;
     poseparams = arrayToString(poseParameters, 72);
     shapeparams = arrayToString(shapeParameters, 10);
-    std::string cmd = "conda run -n py35 python ../data/model/get_loc.py " + poseparams + " " + shapeparams;
+    std::string cmd = "conda run -n py36 python ../data/model/get_loc.py " + poseparams + " " + shapeparams;
     std::string output = "";
     try {
         output = exec(cmd.c_str());
@@ -103,6 +107,40 @@ Eigen::Matrix<double, 24, 3> CalculateJointPosition(const double* poseParameters
         std::cerr << "Error: " << e.what() << std::endl;
     }
     return parseJointPosition(output);
+}
+*/
+
+Eigen::Matrix<double, 24, 3> CalculateJointPosition(const double* poseParameters, const double* shapeParameters)
+{
+    std::string poseparams;
+    std::string shapeparams;
+    poseparams = arrayToString(poseParameters, 72);
+    shapeparams = arrayToString(shapeParameters, 10);
+    PyObject* sysModule = PyImport_ImportModule("sys");
+    PyObject* sysPath = PyObject_GetAttrString(sysModule, "path");
+    PyList_Append(sysPath, PyUnicode_FromString("."));
+    PyObject* sysArgv = PyObject_GetAttrString(sysModule, "argv");
+    Py_DecRef(sysArgv);
+    sysArgv = PyList_New(0);
+    PyObject* ioModule = PyImport_ImportModule("io");
+    PyObject* stringIO = PyObject_CallMethod(ioModule, "StringIO", NULL);
+    PyObject* originalStdout = PyObject_GetAttrString(sysModule, "stdout");
+    PyObject_SetAttrString(sysModule, "stdout", stringIO);
+    // add params
+    PyList_Append(sysArgv, PyUnicode_FromString("get_loc.py"));
+    PyList_Append(sysArgv, PyUnicode_FromString(poseparams.c_str()));
+    PyList_Append(sysArgv, PyUnicode_FromString(shapeparams.c_str()));
+    PyObject_SetAttrString(sysModule, "argv", sysArgv);
+    FILE* file = fopen("get_loc.py", "r");
+    PyRun_SimpleFile(file, "get_loc.py");
+    fclose(file);
+    // get output
+    PyObject* output = PyObject_CallMethod(stringIO, "getvalue", NULL);
+    const char* outputStr = PyUnicode_AsUTF8(output);
+    std::string cppOutput(outputStr);
+    PyObject_SetAttrString(sysModule, "stdout", originalStdout);
+
+    return parseJointPosition(cppOutput);
 }
 
 
@@ -114,6 +152,8 @@ struct SmplCostFunctor {
         int OpenPoseMapping[14] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
         int SMPLMapping[14] = { 12, 17, 19, 21, 16, 18, 20, 0, 2, 5, 6, 1, 4, 7 };
         residuals[0] = 0;
+        residuals[1] = 0;
+        residuals[2] = 0;
         //const double* poseParameters = parameters;
         //const double* shapeParameters = parameters + 72;
         jointPositions = CalculateJointPosition(parameters, parameters + 72);
@@ -126,6 +166,8 @@ struct SmplCostFunctor {
             //std::cout << "Joint Position 2D: " << jointPosition2D.transpose() << std::endl;
             //std::cout << "GT: " << keypoints_[OpenPoseMapping[i]].x << " " << keypoints_[OpenPoseMapping[i]].y << std::endl;
             residuals[0] += keypoints_[OpenPoseMapping[i]].confidence * sqrt((jointPosition2D.x() - keypoints_[OpenPoseMapping[i]].x) * (jointPosition2D.x() - keypoints_[OpenPoseMapping[i]].x) + (jointPosition2D.y() - keypoints_[OpenPoseMapping[i]].y) * (jointPosition2D.y() - keypoints_[OpenPoseMapping[i]].y));
+            // L2 regularization
+            residuals[1] += L2_Regularization_Lambda * (std::pow(parameters[3*SMPLMapping[i]], 2) + std::pow(parameters[3 * SMPLMapping[i] + 1], 2) + std::pow(parameters[3 * SMPLMapping[i] + 2], 2));
         }
 
         // left toe
@@ -146,8 +188,14 @@ struct SmplCostFunctor {
         kpc = (keypoints_[22].confidence + keypoints_[23].confidence) / 2;
         residuals[0] += kpc * sqrt((jointPosition2Dt.x() - kpx) * (jointPosition2Dt.x() - kpx) + (jointPosition2Dt.y() - kpy) * (jointPosition2Dt.y() - kpy));
 
-        cout << residuals[0] << endl;
-        cout << time(nullptr) << endl;
+        residuals[1] += L2_Regularization_Lambda * (std::pow(parameters[3 * SMPLMapping[10]], 2) + std::pow(parameters[3 * SMPLMapping[10] + 1], 2) + std::pow(parameters[3 * SMPLMapping[10] + 2], 2));
+        residuals[1] += L2_Regularization_Lambda * (std::pow(parameters[3 * SMPLMapping[11]], 2) + std::pow(parameters[3 * SMPLMapping[11] + 1], 2) + std::pow(parameters[3 * SMPLMapping[11] + 2], 2));
+        // cout << residuals[0] << endl;
+        // cout << time(nullptr) << endl;
+        int SMPL_Elbows_knees[4] = {4, 5, 18, 19};
+        // residuals[2] = 0;
+        // TODO: penalize unnatural bendings
+
         return true;
     }
 
@@ -172,6 +220,11 @@ vector<Keypoint> ParseKeypoints(const string& jsonString) {
 
 
 int main() {
+    _putenv_s("PYTHONPATH", "C:\\Users\\35449\\anaconda3\\envs\\py36\\Lib;C:\\Users\\35449\\anaconda3\\envs\\py36\\DLLs;C:\\Users\\35449\\anaconda3\\envs\\py36\\Lib\\site-packages;%PATH%");
+    _putenv_s("PYTHONHOME", "D:\\TUM\\3DSMC\\project\\body_animation\\data\\model");
+    if (!Py_IsInitialized()) {
+        Py_Initialize();
+    }
 
     std::string filePath = "../data/EHF/01_2Djnt.json";
     cout << _getcwd(NULL, 0) << endl;
@@ -198,28 +251,42 @@ int main() {
     vector<Keypoint> keypoints = ParseKeypoints(jsonInput);
     Problem problem;
     double Parameters[82] = {0}; // 72 pose params + 10 shape params
-    
+    PyRun_SimpleString("import os");
+    PyRun_SimpleString("os.chdir('../data/model/')");
+
     jointPositions = CalculateJointPosition(Parameters, Parameters+72);
 
     //CostFunction* cost_function = new AutoDiffCostFunction<SmplCostFunctor, 1, 82>(
         //new SmplCostFunctor(keypoints, camParams));
     ceres::NumericDiffOptions numeric_diff_options;
-    numeric_diff_options.ridders_relative_initial_step_size = 0.01;
+    numeric_diff_options.relative_step_size = 0.01;
     // *** WHY CAN'T CHANGE STEP SIZE HERE? ***
-    CostFunction* cost_function = new NumericDiffCostFunction<SmplCostFunctor, CENTRAL, 1, 82>(
+    CostFunction* cost_function = new NumericDiffCostFunction<SmplCostFunctor, RIDDERS, 2, 82>(
         new SmplCostFunctor(keypoints, camParams), TAKE_OWNERSHIP);
+    //CostFunction* cost_function = new NumericDiffCostFunction<SmplCostFunctor, CENTRAL, 1, 82>(
+        //new SmplCostFunctor(keypoints, camParams), TAKE_OWNERSHIP);
     //CostFunction* cost_function = new AutoDiffCostFunction<SmplCostFunctor, 1, 82>(
-    //    new SmplCostFunctor(keypoints, camParams));
+        //new SmplCostFunctor(keypoints, camParams));
 
     problem.AddResidualBlock(cost_function, nullptr, Parameters);
+    // setting bounds
+    for (int i = 0; i < 72; ++i) { // pose params
+        problem.SetParameterLowerBound(Parameters, i, -1.0);
+        problem.SetParameterUpperBound(Parameters, i, 1.0);
+    }
+    for (int i = 72; i < 82; ++i) { // shape params
+        problem.SetParameterLowerBound(Parameters, i, -3.0);
+        problem.SetParameterUpperBound(Parameters, i, 3.0);
+    }
 
 
     // addCostFunctions(&problem, keypoints, camParams, Parameters);
     // TODO: add other cost functions according to the paper
 
     Solver::Options options;
-    // options.linear_solver_type = DENSE_QR;
+    options.linear_solver_type = DENSE_QR;
     options.minimizer_progress_to_stdout = true;
+    options.num_threads = 32;
 
 
     Solver::Summary summary;
@@ -233,6 +300,10 @@ int main() {
             cout << "Pose parameter " << i << ": " << Parameters[i] << endl;
         }
         else cout << "Shape parameter " << i-72 << ": " << Parameters[i] << endl;
+    }
+
+    if (Py_FinalizeEx() < 0) {
+        exit(120);
     }
 
     return 0;

@@ -408,3 +408,75 @@ events:
         
       exitCode: 1
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "D:/TUM/3DSMC/project/lib/pybind11-master/Build/share/cmake/pybind11/pybind11Common.cmake:283 (check_cxx_compiler_flag)"
+      - "D:/TUM/3DSMC/project/lib/pybind11-master/Build/share/cmake/pybind11/pybind11Common.cmake:350 (_pybind11_return_if_cxx_and_linker_flags_work)"
+      - "D:/TUM/3DSMC/project/lib/pybind11-master/Build/share/cmake/pybind11/pybind11Common.cmake:395 (_pybind11_generate_lto)"
+      - "D:/TUM/3DSMC/project/lib/pybind11-master/Build/share/cmake/pybind11/pybind11Config.cmake:250 (include)"
+      - "CMakeLists.txt:13 (find_package)"
+    checks:
+      - "Performing Test HAS_MSVC_GL_LTCG"
+    directories:
+      source: "D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-u4ogse"
+      binary: "D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-u4ogse"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /W3 /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/MDd /Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: ""
+    buildResult:
+      variable: "HAS_MSVC_GL_LTCG"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-u4ogse'
+        
+        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_0e083.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        适用于 .NET Framework MSBuild 版本 17.7.2+d6990bcfa
+        生成启动时间为 2024/2/3 18:19:58。
+        
+        节点 1 上的项目“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-u4ogse\\cmTC_0e083.vcxproj”(默认目标)。
+        PrepareForBuild:
+          正在创建目录“cmTC_0e083.dir\\Debug\\”。
+          正在创建目录“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-u4ogse\\Debug\\”。
+          正在创建目录“cmTC_0e083.dir\\Debug\\cmTC_0e083.tlog\\”。
+        InitializeBuildStatus:
+          正在创建“cmTC_0e083.dir\\Debug\\cmTC_0e083.tlog\\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+          正在对“cmTC_0e083.dir\\Debug\\cmTC_0e083.tlog\\unsuccessfulbuild”执行 Touch 任务。
+        ClCompile:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\CL.exe /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /GL /D _MBCS /D WIN32 /D _WINDOWS /D HAS_MSVC_GL_LTCG /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++14 /Fo"cmTC_0e083.dir\\Debug\\\\" /Fd"cmTC_0e083.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-u4ogse\\src.cxx"
+          Microsoft (R) C/C++ Optimizing Compiler Version 19.37.32825 for x64
+          src.cxx
+          Copyright (C) Microsoft Corporation.  All rights reserved.
+          cl /c /Zi /W3 /WX- /diagnostics:column /Od /Ob0 /GL /D _MBCS /D WIN32 /D _WINDOWS /D HAS_MSVC_GL_LTCG /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /std:c++14 /Fo"cmTC_0e083.dir\\Debug\\\\" /Fd"cmTC_0e083.dir\\Debug\\vc143.pdb" /external:W3 /Gd /TP /errorReport:queue "D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-u4ogse\\src.cxx"
+        Link:
+          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-u4ogse\\Debug\\cmTC_0e083.exe" /INCREMENTAL /ILK:"cmTC_0e083.dir\\Debug\\cmTC_0e083.ilk" /NOLOGO "-LTCG" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-u4ogse/Debug/cmTC_0e083.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/TUM/3DSMC/project/body_animation/Build/CMakeFiles/CMakeScratch/TryCompile-u4ogse/Debug/cmTC_0e083.lib" /MACHINE:X64  /machine:x64 cmTC_0e083.dir\\Debug\\src.obj
+        LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification [D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-u4ogse\\cmTC_0e083.vcxproj]
+          Generating code
+          Finished generating code
+          cmTC_0e083.vcxproj -> D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-u4ogse\\Debug\\cmTC_0e083.exe
+        FinalizeBuildStatus:
+          正在删除文件“cmTC_0e083.dir\\Debug\\cmTC_0e083.tlog\\unsuccessfulbuild”。
+          正在对“cmTC_0e083.dir\\Debug\\cmTC_0e083.tlog\\cmTC_0e083.lastbuildstate”执行 Touch 任务。
+        已完成生成项目“D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-u4ogse\\cmTC_0e083.vcxproj”(默认目标)的操作。
+        
+        已成功生成。
+        
+        “D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-u4ogse\\cmTC_0e083.vcxproj”(默认目标) (1) ->
+        (Link 目标) -> 
+          LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification [D:\\TUM\\3DSMC\\project\\body_animation\\Build\\CMakeFiles\\CMakeScratch\\TryCompile-u4ogse\\cmTC_0e083.vcxproj]
+        
+            1 个警告
+            0 个错误
+        
+        已用时间 00:00:00.68
+        
+      exitCode: 0
+...

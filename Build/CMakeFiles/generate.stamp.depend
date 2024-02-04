@@ -18,6 +18,8 @@ C:/Program Files/CMake/share/cmake-3.28/Modules/Compiler/MSVC-CXX.cmake
 C:/Program Files/CMake/share/cmake-3.28/Modules/Compiler/MSVC.cmake
 C:/Program Files/CMake/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake
 C:/Program Files/CMake/share/cmake-3.28/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindPython/Support.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindPython3.cmake
 C:/Program Files/CMake/share/cmake-3.28/Modules/FindThreads.cmake
 C:/Program Files/CMake/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake
 C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/Windows-Initialize.cmake
