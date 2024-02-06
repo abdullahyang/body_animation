@@ -33,20 +33,6 @@ struct CameraParams {
 };
 CameraParams camParams;
 
-std::string exec(const char* cmd)
-{
-    std::array<char, 128> buffer;
-    std::string result;
-    std::unique_ptr<FILE, decltype(&_pclose)> pipe(_popen(cmd, "r"), _pclose);
-    if (!pipe) {
-        throw std::runtime_error("popen() failed!");
-    }
-    while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
-        result += buffer.data();
-    }
-    return result;
-}
-
 std::string arrayToString(const double* array, int size) {
     std::string result;
     for (int i = 0; i < size; ++i) {
@@ -92,25 +78,6 @@ Eigen::Matrix<double, 24, 3> parseJointPosition(std::string str)
     }
     return matrix;
 }
-/*
-Eigen::Matrix<double, 24, 3> CalculateJointPosition(const double* poseParameters, const double* shapeParameters)
-{
-    std::string poseparams;
-    std::string shapeparams;
-    poseparams = arrayToString(poseParameters, 72);
-    shapeparams = arrayToString(shapeParameters, 10);
-    std::string cmd = "conda run -n py36 python ../data/model/get_loc.py " + poseparams + " " + shapeparams;
-    std::string output = "";
-    try {
-        output = exec(cmd.c_str());
-        // std::cout << "Output: " << output;
-    }
-    catch (const std::runtime_error& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-    }
-    return parseJointPosition(output);
-}
-*/
 
 Eigen::Matrix<double, 24, 3> CalculateJointPosition(const double* poseParameters, const double* shapeParameters)
 {
@@ -151,6 +118,8 @@ struct SmplCostFunctor {
         : keypoints_(keypoints), camParams_(camParams) {}
 
     bool operator()(const double* const parameters, double* residuals) const {
+        // working on figuring out wrong head matching, see fit_3D.py in SMPLify
+        
         // int OpenPoseMapping[14] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
         // int SMPLMapping[14] = { 12, 17, 19, 21, 16, 18, 20, 0, 2, 5, 8, 1, 4, 7 };
         int OpenPoseMapping[13] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
@@ -169,11 +138,8 @@ struct SmplCostFunctor {
             }
         }
 
-        //const double* poseParameters = parameters;
-        //const double* shapeParameters = parameters + 72;
         jointPositions = CalculateJointPosition(parameters, parameters + 72);
         Vector3d jointPosition3D_root = jointPositions.row(SMPLMapping[7]);
-        // std::cout << "Joint Position 3D: " << jointPosition3D.transpose() << std::endl;
         Vector3d projected_root = camParams_.intrinsicMatrix.cast<double>() * (camParams_.rotationMatrix.cast<double>() * jointPosition3D_root + camParams_.translation.cast<double>());
         Vector2d jointPosition2D_root(projected_root(0) / projected_root(2), projected_root(1) / projected_root(2));
         Vector2d root_trans = { keypoints_[OpenPoseMapping[7]].x - jointPosition2D_root.x() , keypoints_[OpenPoseMapping[7]].y - jointPosition2D_root.y() };
@@ -181,7 +147,6 @@ struct SmplCostFunctor {
         for (int i = 0; i < 13; i++)
         {
             Vector3d jointPosition3D = jointPositions.row(SMPLMapping[i]);
-            // std::cout << "Joint Position 3D: " << jointPosition3D.transpose() << std::endl;
             Vector3d projected = camParams_.intrinsicMatrix.cast<double>() * (camParams_.rotationMatrix.cast<double>() * jointPosition3D + camParams_.translation.cast<double>());
             Vector2d jointPosition2D(projected(0) / projected(2), projected(1) / projected(2));
             jointPosition2D.x() += root_trans.x();
@@ -195,11 +160,6 @@ struct SmplCostFunctor {
             // residuals[0] += keypoints_[OpenPoseMapping[i]].confidence * sqrt((jointPosition2D.x() - keypoints_[OpenPoseMapping[i]].x) * (jointPosition2D.x() - keypoints_[OpenPoseMapping[i]].x) + (jointPosition2D.y() - keypoints_[OpenPoseMapping[i]].y) * (jointPosition2D.y() - keypoints_[OpenPoseMapping[i]].y));
             residuals[i] += keypoints_[OpenPoseMapping[i]].confidence * sqrt((jointPosition2D.x() - keypoints_[OpenPoseMapping[i]].x) * (jointPosition2D.x() - keypoints_[OpenPoseMapping[i]].x) + (jointPosition2D.y() - keypoints_[OpenPoseMapping[i]].y) * (jointPosition2D.y() - keypoints_[OpenPoseMapping[i]].y));
             
-        }
-        for (int i = 0; i < 72; i = i + 3)
-        {
-            // L2 regularization
-            // residuals[16] += L2_Regularization_Lambda * (std::pow(parameters[i], 2) + std::pow(parameters[i + 1], 2) + std::pow(parameters[i + 2], 2));
         }
 
         // left toe
@@ -236,17 +196,7 @@ struct SmplCostFunctor {
             std::cout << "Joint Position 2D: " << jointPosition2Dt.transpose() << std::endl;
             std::cout << "GT: " << kpx << " " << kpy << std::endl;
         }
-        //residuals[1] += L2_Regularization_Lambda * (std::pow(parameters[3 * SMPLMapping[10]], 2) + std::pow(parameters[3 * SMPLMapping[10] + 1], 2) + std::pow(parameters[3 * SMPLMapping[10] + 2], 2));
-        //residuals[1] += L2_Regularization_Lambda * (std::pow(parameters[3 * SMPLMapping[11]], 2) + std::pow(parameters[3 * SMPLMapping[11] + 1], 2) + std::pow(parameters[3 * SMPLMapping[11] + 2], 2));
-        for (int i = 72; i < 82; i++)
-        {
-            // residuals[1] += parameters[i] * parameters[i];
-        }
-        // cout << residuals[0] << endl;
-        // cout << time(nullptr) << endl;
         
-
-        // residuals[2] = 0;
         // TODO: penalize unnatural bendings
         // 4,5 knee; 18,19 elbow
         int SMPL_Elbows_knees[4] = { 4, 5, 18, 19 };
@@ -327,32 +277,11 @@ int main() {
     eval = 0;
     jointPositions = CalculateJointPosition(Parameters, Parameters+72);
 
-    //CostFunction* cost_function = new AutoDiffCostFunction<SmplCostFunctor, 1, 82>(
-        //new SmplCostFunctor(keypoints, camParams));
     ceres::NumericDiffOptions numeric_diff_options;
     numeric_diff_options.relative_step_size = 0.01;
-    // *** WHY CAN'T CHANGE STEP SIZE HERE? ***
     CostFunction* cost_function = new NumericDiffCostFunction<SmplCostFunctor, RIDDERS, 18, 82>(
         new SmplCostFunctor(keypoints, camParams), TAKE_OWNERSHIP);
-    //CostFunction* cost_function = new NumericDiffCostFunction<SmplCostFunctor, CENTRAL, 17, 82>(
-        //new SmplCostFunctor(keypoints, camParams), TAKE_OWNERSHIP);
-    //CostFunction* cost_function = new AutoDiffCostFunction<SmplCostFunctor, 1, 82>(
-        //new SmplCostFunctor(keypoints, camParams));
-
     problem.AddResidualBlock(cost_function, nullptr, Parameters);
-    // setting bounds
-    for (int i = 0; i < 72; ++i) { // pose params
-        // problem.SetParameterLowerBound(Parameters, i, -1.57);
-        // problem.SetParameterUpperBound(Parameters, i, 1.57);
-    }
-    for (int i = 72; i < 82; ++i) { // shape params
-        //problem.SetParameterLowerBound(Parameters, i, -3.0);
-        //problem.SetParameterUpperBound(Parameters, i, 3.0);
-    }
-
-
-    // addCostFunctions(&problem, keypoints, camParams, Parameters);
-    // TODO: add other cost functions according to the paper
 
     Solver::Options options;
     options.linear_solver_type = DENSE_QR;
@@ -386,7 +315,6 @@ int main() {
             std::cout << "GT: " << keypoints[OpenPoseMapping[i]].x << " " << keypoints[OpenPoseMapping[i]].y << std::endl;
         }
     }
-
 
     cout << "Pose parameter :" << endl;
     for (int i = 0; i < 72; ++i) {
