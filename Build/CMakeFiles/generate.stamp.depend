@@ -6,6 +6,7 @@ C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake
 C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeGenericSystem.cmake
 C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake
 C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeParseImplicitLinkInfo.cmake
 C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeRCInformation.cmake
 C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake
 C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake
@@ -16,6 +17,7 @@ C:/Program Files/CMake/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacr
 C:/Program Files/CMake/share/cmake-3.28/Modules/Compiler/MSVC-C.cmake
 C:/Program Files/CMake/share/cmake-3.28/Modules/Compiler/MSVC-CXX.cmake
 C:/Program Files/CMake/share/cmake-3.28/Modules/Compiler/MSVC.cmake
+C:/Program Files/CMake/share/cmake-3.28/Modules/FindCUDAToolkit.cmake
 C:/Program Files/CMake/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake
 C:/Program Files/CMake/share/cmake-3.28/Modules/FindPackageMessage.cmake
 C:/Program Files/CMake/share/cmake-3.28/Modules/FindPython/Support.cmake
@@ -30,7 +32,6 @@ C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/Windows.cmake
 C:/Program Files/CMake/share/cmake-3.28/Modules/Platform/WindowsPaths.cmake
 D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres/CeresConfig.cmake
 D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres/CeresConfigVersion.cmake
-D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres/CeresTargets-debug.cmake
 D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres/CeresTargets-release.cmake
 D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres/CeresTargets.cmake
 D:/TUM/3DSMC/exercise/Libs/eigen-3.4.0/eigen-3.4.0/Build/Eigen3Config.cmake

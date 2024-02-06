@@ -480,3 +480,199 @@ events:
         
       exitCode: 0
 ...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/FindCUDAToolkit.cmake:640 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/FindCUDAToolkit.cmake:766 (_CUDAToolkit_find_root_dir)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres/CeresConfig.cmake:182 (find_dependency)"
+      - "CMakeLists.txt:15 (find_package)"
+    message: |
+      Executed nvcc to extract CUDAToolkit information:
+      
+      D:\\TUM\\3DSMC\\project\\body_animation\\Build>call "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.37.32822/bin/HostX64/x64/../../../../../../../VC/Auxiliary/Build/vcvars64.bat" 
+      **********************************************************************
+      ** Visual Studio 2022 Developer Command Prompt v17.7.6
+      ** Copyright (c) 2022 Microsoft Corporation
+      **********************************************************************
+      [vcvarsall.bat] Environment initialized for: 'x64'
+      #$ C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.37.32822/bin/HostX64/x64/../../../../../../../VC/Auxiliary/Build/vcvars64.bat
+      #$ ALLUSERSPROFILE=C:\\ProgramData
+      #$ APPDATA=C:\\Users\\35449\\AppData\\Roaming
+      #$ CAExcludePath=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\atlmfc\\include;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\include;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt;;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\um;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\shared;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\winrt;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\cppwinrt;Include\\um;
+      #$ CommandPromptType=Native
+      #$ CommonProgramFiles=C:\\Program Files\\Common Files
+      #$ CommonProgramFiles(x86)=C:\\Program Files (x86)\\Common Files
+      #$ CommonProgramW6432=C:\\Program Files\\Common Files
+      #$ COMPUTERNAME=OMEN
+      #$ ComSpec=C:\\WINDOWS\\system32\\cmd.exe
+      #$ CUDA_PATH=C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.3
+      #$ CUDA_PATH_V12_3=C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.3
+      #$ DevEnvDir=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\
+      #$ DriverData=C:\\Windows\\System32\\Drivers\\DriverData
+      #$ EFC_8608=1
+      #$ ExtensionSdkDir=C:\\Program Files (x86)\\Microsoft SDKs\\Windows Kits\\10\\ExtensionSDKs
+      #$ EXTERNAL_INCLUDE=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\include;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\ATLMFC\\include;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\include;C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22621.0\\ucrt;C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.22621.0\\\\um;C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.22621.0\\\\shared;C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.22621.0\\\\winrt;C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.22621.0\\\\cppwinrt;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\include;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\atlmfc\\include;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\include;;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt;;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\UnitTest\\include;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\um;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\shared;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\winrt;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\cppwinrt;Include\\um
+      #$ FPS_BROWSER_APP_PROFILE_STRING=Internet Explorer
+      #$ FPS_BROWSER_USER_PROFILE_STRING=Default
+      #$ Framework40Version=v4.0
+      #$ FrameworkDir=C:\\Windows\\Microsoft.NET\\Framework64\\
+      #$ FrameworkDir64=C:\\Windows\\Microsoft.NET\\Framework64\\
+      #$ FrameworkVersion=v4.0.30319
+      #$ FrameworkVersion64=v4.0.30319
+      #$ GCExpConfigUsedInSession=3
+      #$ HOMEDRIVE=C:
+      #$ HOMEPATH=\\Users\\35449
+      #$ IGCCSVC_DB=AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA3cMjM3lrikiNF3h3RBdCpwQAAAACAAAAAAAQZgAAAAEAACAAAABHqj7CEufQX9W/g7d3EG6cINHeS8rppTxUjqZc+t17cAAAAAAOgAAAAAIAACAAAACjozAJ0GdfREZHsWFPM0e3HkTNVIvInJZ7TKLkC62EaGAAAAAOuVTXR7OR+X14b4TrK8sH9GX+kp16A0DtjJ9ivwfMAJF+18xrt0E37dyqjfKMGcgMo5n1oZeeQUrMGwHJ+wrIcP4z71wm4hzk6ch4ZT6uJuueHAh9gRhd2T31axvhk3NAAAAAiEGSy75orH0ghxEYW0XeHq476JVCLsCcNWwYd8SuDSXo+/Fj6yEN08ychJpKq9Lt4IVV/p7jajiWWcTl1b4a0A==
+      #$ INCLUDE=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\include;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\ATLMFC\\include;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\include;C:\\Program Files (x86)\\Windows Kits\\10\\include\\10.0.22621.0\\ucrt;C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.22621.0\\\\um;C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.22621.0\\\\shared;C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.22621.0\\\\winrt;C:\\Program Files (x86)\\Windows Kits\\10\\\\include\\10.0.22621.0\\\\cppwinrt;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\include;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\atlmfc\\include;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\include;;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt;;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\UnitTest\\include;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\um;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\shared;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\winrt;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\cppwinrt;Include\\um
+      #$ LIB=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\ATLMFC\\lib\\x64;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\lib\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\lib\\10.0.22621.0\\ucrt\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\\\lib\\10.0.22621.0\\\\um\\x64;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\lib\\x64;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\atlmfc\\lib\\x64;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\lib\\x64;;C:\\Program Files (x86)\\Windows Kits\\10\\lib\\10.0.22621.0\\ucrt\\x64;;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\UnitTest\\lib;C:\\Program Files (x86)\\Windows Kits\\10\\lib\\10.0.22621.0\\um\\x64;lib\\um\\x64
+      #$ LIBPATH=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\ATLMFC\\lib\\x64;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\lib\\x64;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\lib\\x86\\store\\references;C:\\Program Files (x86)\\Windows Kits\\10\\UnionMetadata\\10.0.22621.0;C:\\Program Files (x86)\\Windows Kits\\10\\References\\10.0.22621.0;C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\atlmfc\\lib\\x64;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\lib\\x64
+      #$ LOCALAPPDATA=C:\\Users\\35449\\AppData\\Local
+      #$ LOGONSERVER=\\\\OMEN
+      #$ MSBuildLoadMicrosoftTargetsReadOnly=true
+      #$ NUMBER_OF_PROCESSORS=32
+      #$ OneDrive=C:\\Users\\35449\\OneDrive - xocn
+      #$ OneDriveCommercial=C:\\Users\\35449\\OneDrive - xocn
+      #$ OneDriveConsumer=C:\\Users\\35449\\OneDrive
+      #$ OnlineServices=Online Services
+      #$ OS=Windows_NT
+      #$ Path=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\VCPackages;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\bin\\Roslyn;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Team Tools\\Performance Tools\\x64;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Team Tools\\Performance Tools;C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\Common\\VSPerfCollectionTools\\vs2019\\\\x64;C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\Common\\VSPerfCollectionTools\\vs2019\\;C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.22621.0\\\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\bin\\\\x64;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\\\MSBuild\\Current\\Bin\\amd64;C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.22621.0\\x64;;C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.22621.0\\x86;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\tools;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\ide;C:\\Program Files (x86)\\HTML Help Workshop;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64;C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\;C:\\WINDOWS\\Microsoft.NET\\Framework\\v4.0.30319\\;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin;C:\\WINDOWS\\Microsoft.NET\\Framework\\v4.0.30319\\;;C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.3\\bin;C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.3\\libnvvp;C:\\Program Files\\NOITOM\\Axis Legacy\\;C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\;C:\\Program Files\\NOITOM\\Axis Neuron\\;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\HP\\OMEN-Broadcast\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Users\\35449\\anaconda3;C:\\Users\\35449\\anaconda3\\Library\\mingw-w64\\bin;C:\\Users\\35449\\anaconda3\\Library\\usr\\bin;C:\\Users\\35449\\anaconda3\\Library\\bin;C:\\Users\\35449\\anaconda3\\Scripts;C:\\Users\\35449\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\PyCharm Community Edition 2023.1\\bin;C:\\Windows;C:\\Windows\\System32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\HP\\OMEN-Broadcast\\Common;C:\\Program Files (x86)\\ZeroTier\\One\\;C:\\Program Files\\CMake\\bin;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\Program Files\\NVIDIA Corporation\\Nsight Compute 2023.3.0\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Users\\35449\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Users\\35449\\anaconda3;C:\\Users\\35449\\anaconda3\\Library\\mingw-w64\\bin;C:\\Users\\35449\\anaconda3\\Library\\usr\\bin;C:\\Users\\35449\\anaconda3\\Library\\bin;C:\\Users\\35449\\anaconda3\\Scripts;C:\\Users\\35449\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\PyCharm Community Edition 2023.1\\bin;;C:\\Users\\35449\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\35449\\anaconda3\\envs\\py36;;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\vcpkg
+      #$ PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+      #$ PkgDefApplicationConfigFile=C:\\Users\\35449\\AppData\\Local\\Microsoft\\VisualStudio\\17.0_5a35a2e5\\devenv.exe.config
+      #$ Platform=x64
+      #$ platformcode=M7
+      #$ PROCESSOR_ARCHITECTURE=AMD64
+      #$ PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 183 Stepping 1, GenuineIntel
+      #$ PROCESSOR_LEVEL=6
+      #$ PROCESSOR_REVISION=b701
+      #$ ProgramData=C:\\ProgramData
+      #$ ProgramFiles=C:\\Program Files
+      #$ ProgramFiles(x86)=C:\\Program Files (x86)
+      #$ ProgramW6432=C:\\Program Files
+      #$ PROMPT=$P$G
+      #$ PSModulePath=C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules
+      #$ PUBLIC=C:\\Users\\Public
+      #$ PyCharm Community Edition=C:\\Program Files\\JetBrains\\PyCharm Community Edition 2023.1\\bin;
+      #$ RegionCode=APJ
+      #$ ServiceHubLogSessionKey=F1514351
+      #$ SESSIONNAME=Console
+      #$ SystemDrive=C:
+      #$ SystemRoot=C:\\WINDOWS
+      #$ ThreadedWaitDialogDpiContext=-4
+      #$ UCRTVersion=10.0.22621.0
+      #$ UniversalCRTSdkDir=C:\\Program Files (x86)\\Windows Kits\\10\\
+      #$ USERDOMAIN=OMEN
+      #$ USERDOMAIN_ROAMINGPROFILE=OMEN
+      #$ USERNAME=35449
+      #$ USERPROFILE=C:\\Users\\35449
+      #$ VCIDEInstallDir=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\
+      #$ VCINSTALLDIR=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\
+      #$ VCPKG_ROOT=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\vcpkg
+      #$ VCToolsInstallDir=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\
+      #$ VCToolsRedistDir=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Redist\\MSVC\\14.36.32532\\
+      #$ VCToolsVersion=14.37.32822
+      #$ VisualStudioDir=C:\\Users\\35449\\Documents\\Visual Studio 2022
+      #$ VisualStudioEdition=Microsoft Visual Studio Community 2022
+      #$ VisualStudioVersion=17.0
+      #$ VS170COMNTOOLS=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\
+      #$ VSAPPIDDIR=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\
+      #$ VSAPPIDNAME=devenv.exe
+      #$ VSCMD_ARG_app_plat=Desktop
+      #$ VSCMD_ARG_HOST_ARCH=x64
+      #$ VSCMD_ARG_TGT_ARCH=x64
+      #$ VSCMD_VER=17.7.6
+      #$ vsconsoleoutput=1
+      #$ VSINSTALLDIR=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\
+      #$ VSLANG=1033
+      #$ VSSKUEDITION=Community
+      #$ VSTEL_CurrentSolutionBuildID=1520267093
+      #$ VSTEL_MSBuildProjectFullPath=D:\\TUM\\3DSMC\\project\\body_animation\\Build\\ZERO_CHECK.vcxproj
+      #$ VSTEL_ProjectID={5AA17385-ED8D-3CC4-A50A-F44DA68AA138}
+      #$ VSTEL_SolutionPath=D:\\TUM\\3DSMC\\project\\body_animation\\Build\\SMPLModelOptimization.sln
+      #$ VSTEL_SolutionSessionID={4E8E7E6F-DD7F-4E1A-AA41-8EF0C23D8711}
+      #$ VS_Perf_Session_GCHeapCount=2
+      #$ windir=C:\\WINDOWS
+      #$ WindowsLibPath=C:\\Program Files (x86)\\Windows Kits\\10\\UnionMetadata\\10.0.22621.0;C:\\Program Files (x86)\\Windows Kits\\10\\References\\10.0.22621.0
+      #$ WindowsSdkBinPath=C:\\Program Files (x86)\\Windows Kits\\10\\bin\\
+      #$ WindowsSdkDir=C:\\Program Files (x86)\\Windows Kits\\10\\
+      #$ WindowsSDKLibVersion=10.0.22621.0\\
+      #$ WindowsSdkVerBinPath=C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.22621.0\\
+      #$ WindowsSDKVersion=10.0.22621.0\\
+      #$ ZES_ENABLE_SYSMAN=1
+      #$ __DOTNET_ADD_64BIT=1
+      #$ __DOTNET_PREFERRED_BITNESS=64
+      #$ __VSCMD_PREINIT_EXTERNAL_INCLUDE=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\include;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\atlmfc\\include;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\include;;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt;;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\UnitTest\\include;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\um;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\shared;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\winrt;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\cppwinrt;Include\\um;
+      #$ __VSCMD_PREINIT_INCLUDE=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\include;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\atlmfc\\include;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\include;;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt;;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Auxiliary\\VS\\UnitTest\\include;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\um;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\shared;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\winrt;C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.22621.0\\cppwinrt;Include\\um;
+      #$ __VSCMD_PREINIT_LIBPATH=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\atlmfc\\lib\\x64;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\lib\\x64;
+      #$ __VSCMD_PREINIT_PATH=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.22621.0\\x64;;C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.22621.0\\x86;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\tools;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\ide;C:\\Program Files (x86)\\HTML Help Workshop;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64;C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\;C:\\WINDOWS\\Microsoft.NET\\Framework\\v4.0.30319\\;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin;C:\\WINDOWS\\Microsoft.NET\\Framework\\v4.0.30319\\;;C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.3\\bin;C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.3\\libnvvp;C:\\Program Files\\NOITOM\\Axis Legacy\\;C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\;C:\\Program Files\\NOITOM\\Axis Neuron\\;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\HP\\OMEN-Broadcast\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Users\\35449\\anaconda3;C:\\Users\\35449\\anaconda3\\Library\\mingw-w64\\bin;C:\\Users\\35449\\anaconda3\\Library\\usr\\bin;C:\\Users\\35449\\anaconda3\\Library\\bin;C:\\Users\\35449\\anaconda3\\Scripts;C:\\Users\\35449\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\PyCharm Community Edition 2023.1\\bin;C:\\Windows;C:\\Windows\\System32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\HP\\OMEN-Broadcast\\Common;C:\\Program Files (x86)\\ZeroTier\\One\\;C:\\Program Files\\CMake\\bin;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\Program Files\\NVIDIA Corporation\\Nsight Compute 2023.3.0\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Users\\35449\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Users\\35449\\anaconda3;C:\\Users\\35449\\anaconda3\\Library\\mingw-w64\\bin;C:\\Users\\35449\\anaconda3\\Library\\usr\\bin;C:\\Users\\35449\\anaconda3\\Library\\bin;C:\\Users\\35449\\anaconda3\\Scripts;C:\\Users\\35449\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\PyCharm Community Edition 2023.1\\bin;;C:\\Users\\35449\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\35449\\anaconda3\\envs\\py36;;
+      #$ PATH=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\VCPackages;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\bin\\Roslyn;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Team Tools\\Performance Tools\\x64;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Team Tools\\Performance Tools;C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\Common\\VSPerfCollectionTools\\vs2019\\\\x64;C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\Common\\VSPerfCollectionTools\\vs2019\\;C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.22621.0\\\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\bin\\\\x64;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\\\MSBuild\\Current\\Bin\\amd64;C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.22621.0\\x64;;C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.22621.0\\x86;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\tools;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\ide;C:\\Program Files (x86)\\HTML Help Workshop;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64;C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\;C:\\WINDOWS\\Microsoft.NET\\Framework\\v4.0.30319\\;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin;C:\\WINDOWS\\Microsoft.NET\\Framework\\v4.0.30319\\;;C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.3\\bin;C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.3\\libnvvp;C:\\Program Files\\NOITOM\\Axis Legacy\\;C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\;C:\\Program Files\\NOITOM\\Axis Neuron\\;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\HP\\OMEN-Broadcast\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Users\\35449\\anaconda3;C:\\Users\\35449\\anaconda3\\Library\\mingw-w64\\bin;C:\\Users\\35449\\anaconda3\\Library\\usr\\bin;C:\\Users\\35449\\anaconda3\\Library\\bin;C:\\Users\\35449\\anaconda3\\Scripts;C:\\Users\\35449\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\PyCharm Community Edition 2023.1\\bin;C:\\Windows;C:\\Windows\\System32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\HP\\OMEN-Broadcast\\Common;C:\\Program Files (x86)\\ZeroTier\\One\\;C:\\Program Files\\CMake\\bin;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\Program Files\\NVIDIA Corporation\\Nsight Compute 2023.3.0\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Users\\35449\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Users\\35449\\anaconda3;C:\\Users\\35449\\anaconda3\\Library\\mingw-w64\\bin;C:\\Users\\35449\\anaconda3\\Library\\usr\\bin;C:\\Users\\35449\\anaconda3\\Library\\bin;C:\\Users\\35449\\anaconda3\\Scripts;C:\\Users\\35449\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\PyCharm Community Edition 2023.1\\bin;;C:\\Users\\35449\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\35449\\anaconda3\\envs\\py36;;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\vcpkg
+      #$ _NVVM_BRANCH_=nvvm
+      #$ _SPACE_= 
+      #$ _CUDART_=cudart
+      #$ _HERE_=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3/bin
+      #$ _THERE_=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3/bin
+      #$ _TARGET_SIZE_=
+      #$ _TARGET_DIR_=
+      #$ _TARGET_SIZE_=64
+      #$ _WIN_PLATFORM_=x64
+      #$ TOP=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3/bin/..
+      #$ NVVMIR_LIBRARY_DIR=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3/bin/../nvvm/libdevice
+      #$ PATH=C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3/bin/../nvvm/bin;C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3/bin;C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3/bin/../lib;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\VCPackages;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TestWindow;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\TeamFoundation\\Team Explorer;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\bin\\Roslyn;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Team Tools\\Performance Tools\\x64;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Team Tools\\Performance Tools;C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\Common\\VSPerfCollectionTools\\vs2019\\\\x64;C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\Common\\VSPerfCollectionTools\\vs2019\\;C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.22621.0\\\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\bin\\\\x64;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\\\MSBuild\\Current\\Bin\\amd64;C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\Tools\\;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.37.32822\\bin\\HostX64\\x64;C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.22621.0\\x64;;C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.22621.0\\x86;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\tools;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\ide;C:\\Program Files (x86)\\HTML Help Workshop;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64;C:\\WINDOWS\\Microsoft.NET\\Framework64\\v4.0.30319\\;C:\\WINDOWS\\Microsoft.NET\\Framework\\v4.0.30319\\;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin;C:\\WINDOWS\\Microsoft.NET\\Framework\\v4.0.30319\\;;C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.3\\bin;C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v12.3\\libnvvp;C:\\Program Files\\NOITOM\\Axis Legacy\\;C:\\Program Files (x86)\\VMware\\VMware Workstation\\bin\\;C:\\Program Files\\NOITOM\\Axis Neuron\\;C:\\windows\\system32;C:\\windows;C:\\windows\\System32\\Wbem;C:\\windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\windows\\System32\\OpenSSH\\;C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C:\\Program Files\\NVIDIA Corporation\\NVIDIA NvDLISR;C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\HP\\OMEN-Broadcast\\Common;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\WINDOWS\\System32\\OpenSSH\\;C:\\Users\\35449\\anaconda3;C:\\Users\\35449\\anaconda3\\Library\\mingw-w64\\bin;C:\\Users\\35449\\anaconda3\\Library\\usr\\bin;C:\\Users\\35449\\anaconda3\\Library\\bin;C:\\Users\\35449\\anaconda3\\Scripts;C:\\Users\\35449\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\PyCharm Community Edition 2023.1\\bin;C:\\Windows;C:\\Windows\\System32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Program Files\\HP\\OMEN-Broadcast\\Common;C:\\Program Files (x86)\\ZeroTier\\One\\;C:\\Program Files\\CMake\\bin;C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance Toolkit\\;C:\\Program Files\\NVIDIA Corporation\\Nsight Compute 2023.3.0\\;C:\\Program Files\\dotnet\\;C:\\Program Files\\Git\\cmd;C:\\Users\\35449\\AppData\\Local\\Programs\\Python\\Launcher\\;C:\\Users\\35449\\anaconda3;C:\\Users\\35449\\anaconda3\\Library\\mingw-w64\\bin;C:\\Users\\35449\\anaconda3\\Library\\usr\\bin;C:\\Users\\35449\\anaconda3\\Library\\bin;C:\\Users\\35449\\anaconda3\\Scripts;C:\\Users\\35449\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Program Files\\JetBrains\\PyCharm Community Edition 2023.1\\bin;;C:\\Users\\35449\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\35449\\anaconda3\\envs\\py36;;;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\CMake\\bin;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\CommonExtensions\\Microsoft\\CMake\\Ninja;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\Common7\\IDE\\VC\\Linux\\bin\\ConnectionManagerExe;C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\vcpkg
+      #$ INCLUDES="-IC:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3/bin/../include"  
+      #$ LIBRARIES=  "/LIBPATH:C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3/bin/../lib/x64"
+      #$ CUDAFE_FLAGS=
+      #$ PTXAS_FLAGS=
+      nvcc fatal   : Don't know what to do with '__cmake_determine_cuda'
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/FindCUDAToolkit.cmake:644 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/FindCUDAToolkit.cmake:766 (_CUDAToolkit_find_root_dir)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres/CeresConfig.cmake:182 (find_dependency)"
+      - "CMakeLists.txt:15 (find_package)"
+    message: |
+      Parsed CUDAToolkit nvcc location:
+      C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3/bin
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/FindCUDAToolkit.cmake:656 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/FindCUDAToolkit.cmake:766 (_CUDAToolkit_find_root_dir)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres/CeresConfig.cmake:182 (find_dependency)"
+      - "CMakeLists.txt:15 (find_package)"
+    message: |
+      Parsed CUDAToolkit nvcc implicit include information:
+      C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3/include
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/FindCUDAToolkit.cmake:671 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/FindCUDAToolkit.cmake:766 (_CUDAToolkit_find_root_dir)"
+      - "C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "D:/TUM/3DSMC/exercise/Libs/Ceres/lib/cmake/Ceres/CeresConfig.cmake:182 (find_dependency)"
+      - "CMakeLists.txt:15 (find_package)"
+    message: |
+      Parsed CUDAToolkit nvcc implicit link information:
+        link line regex: [^( *|.*[/\\])(link\\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        link line: [cuda-fake-ld   "/LIBPATH:C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3/bin/../lib/x64"]
+          arg [cuda-fake-ld] ==> ignore
+          arg [/LIBPATH:C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3/bin/../lib/x64] ==> dir [C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3/bin/../lib/x64]
+        collapse library dir [C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3/bin/../lib/x64] ==> [C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3/lib/x64]
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: [C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3/lib/x64]
+        implicit fwks: []
+      
+      C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.3/lib/x64
+      
+...

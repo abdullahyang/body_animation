@@ -151,10 +151,11 @@ struct SmplCostFunctor {
         : keypoints_(keypoints), camParams_(camParams) {}
 
     bool operator()(const double* const parameters, double* residuals) const {
-        int OpenPoseMapping[14] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
-        int SMPLMapping[14] = { 12, 17, 19, 21, 16, 18, 20, 0, 2, 5, 8, 1, 4, 7 };
-
-        for (int i = 0; i < 17; i++)
+        // int OpenPoseMapping[14] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
+        // int SMPLMapping[14] = { 12, 17, 19, 21, 16, 18, 20, 0, 2, 5, 8, 1, 4, 7 };
+        int OpenPoseMapping[13] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
+        int SMPLMapping[13] = {17, 19, 21, 16, 18, 20, 0, 2, 5, 8, 1, 4, 7 };
+        for (int i = 0; i < 18; i++)
         {
             residuals[i] = 0;
         }
@@ -177,7 +178,7 @@ struct SmplCostFunctor {
         Vector2d jointPosition2D_root(projected_root(0) / projected_root(2), projected_root(1) / projected_root(2));
         Vector2d root_trans = { keypoints_[OpenPoseMapping[7]].x - jointPosition2D_root.x() , keypoints_[OpenPoseMapping[7]].y - jointPosition2D_root.y() };
         root_trans_global = root_trans;
-        for (int i = 0; i < 14; i++)
+        for (int i = 0; i < 13; i++)
         {
             Vector3d jointPosition3D = jointPositions.row(SMPLMapping[i]);
             // std::cout << "Joint Position 3D: " << jointPosition3D.transpose() << std::endl;
@@ -211,6 +212,13 @@ struct SmplCostFunctor {
         double kpy = (keypoints_[19].y + keypoints_[20].y) / 2;
         double kpc = (keypoints_[19].confidence + keypoints_[20].confidence) / 2;
         residuals[14] += kpc * sqrt((jointPosition2Dt.x() - kpx) * (jointPosition2Dt.x() - kpx) + (jointPosition2Dt.y() - kpy) * (jointPosition2Dt.y() - kpy));
+        if (eval)
+        {
+            std::cout << "left toe" << std::endl;
+            std::cout << "Joint Position 2D: " << jointPosition2Dt.transpose() << std::endl;
+            std::cout << "GT: " << kpx << " " << kpy << std::endl;
+        }
+
 
         // right toe
         jointPosition3Dt = jointPositions.row(SMPLMapping[11]);
@@ -222,7 +230,12 @@ struct SmplCostFunctor {
         kpy = (keypoints_[22].y + keypoints_[23].y) / 2;
         kpc = (keypoints_[22].confidence + keypoints_[23].confidence) / 2;
         residuals[15] += kpc * sqrt((jointPosition2Dt.x() - kpx) * (jointPosition2Dt.x() - kpx) + (jointPosition2Dt.y() - kpy) * (jointPosition2Dt.y() - kpy));
-
+        if (eval)
+        {
+            std::cout << "right toe" << std::endl;
+            std::cout << "Joint Position 2D: " << jointPosition2Dt.transpose() << std::endl;
+            std::cout << "GT: " << kpx << " " << kpy << std::endl;
+        }
         //residuals[1] += L2_Regularization_Lambda * (std::pow(parameters[3 * SMPLMapping[10]], 2) + std::pow(parameters[3 * SMPLMapping[10] + 1], 2) + std::pow(parameters[3 * SMPLMapping[10] + 2], 2));
         //residuals[1] += L2_Regularization_Lambda * (std::pow(parameters[3 * SMPLMapping[11]], 2) + std::pow(parameters[3 * SMPLMapping[11] + 1], 2) + std::pow(parameters[3 * SMPLMapping[11] + 2], 2));
         for (int i = 72; i < 82; i++)
@@ -231,10 +244,28 @@ struct SmplCostFunctor {
         }
         // cout << residuals[0] << endl;
         // cout << time(nullptr) << endl;
-        int SMPL_Elbows_knees[4] = {4, 5, 18, 19};
+        
+
         // residuals[2] = 0;
         // TODO: penalize unnatural bendings
-
+        // 4,5 knee; 18,19 elbow
+        int SMPL_Elbows_knees[4] = { 4, 5, 18, 19 };
+        for (int i = 0; i < 4; i++)
+        {
+            int Param_index = 3 * SMPL_Elbows_knees[i];
+            double theta = sqrt(parameters[Param_index] * parameters[Param_index] + parameters[Param_index + 1] * parameters[Param_index + 1] + parameters[Param_index + 2] * parameters[Param_index + 2]);
+            double alpha = 10;
+            // knees
+            if (i < 2)
+            {
+                residuals[17] += alpha * exp(-theta);
+            }
+            // elbows
+            if (i >= 2)
+            {
+                residuals[17] += alpha * exp(theta);
+            }
+        }
         return true;
     }
 
@@ -265,7 +296,7 @@ int main() {
         Py_Initialize();
     }
 
-    std::string filePath = "../data/EHF/01_2Djnt.json";
+    std::string filePath = "../data/EHF/20_2Djnt.json";
     cout << _getcwd(NULL, 0) << endl;
     // Read keypoints
     std::ifstream file(filePath);
@@ -301,7 +332,7 @@ int main() {
     ceres::NumericDiffOptions numeric_diff_options;
     numeric_diff_options.relative_step_size = 0.01;
     // *** WHY CAN'T CHANGE STEP SIZE HERE? ***
-    CostFunction* cost_function = new NumericDiffCostFunction<SmplCostFunctor, RIDDERS, 17, 82>(
+    CostFunction* cost_function = new NumericDiffCostFunction<SmplCostFunctor, RIDDERS, 18, 82>(
         new SmplCostFunctor(keypoints, camParams), TAKE_OWNERSHIP);
     //CostFunction* cost_function = new NumericDiffCostFunction<SmplCostFunctor, CENTRAL, 17, 82>(
         //new SmplCostFunctor(keypoints, camParams), TAKE_OWNERSHIP);
@@ -329,7 +360,7 @@ int main() {
     options.num_threads = 32;
     options.max_solver_time_in_seconds = 1200;
     options.trust_region_strategy_type = ceres::DOGLEG;
-
+    options.dense_linear_algebra_library_type = ceres::CUDA;
     Solver::Summary summary;
 
     ceres::Solve(options, &problem, &summary);
@@ -368,6 +399,7 @@ int main() {
         cout << Parameters[i];
         if (i != 81) cout << ",";
     }
+    cout << endl << "Model root translation: " << root_trans_global.x() << "," << root_trans_global.y() << endl;
 
     cout << endl;
     if (Py_FinalizeEx() < 0) {
