@@ -31,7 +31,7 @@ def get_joint_locations(smpl_layer, pose_params, shape_params):
     shape_params = shape_params.unsqueeze(0)
 
     verts, Jtr = smpl_layer(pose_params, th_betas=shape_params)
-    return Jtr.squeeze(0)
+    return Jtr.squeeze(0), verts.squeeze(0)[332]
 
 def calculate_joint_position(pPoseParams, pShapeParams):
     # torch.set_printoptions(sci_mode=False)
@@ -91,7 +91,9 @@ if __name__ == '__main__':
     shape_params = torch.Tensor(shape_params)
 
     # Get joint locations
-    joint_locations = get_joint_locations(smpl_layer, pose_params, shape_params)
+    joint_locations, nose = get_joint_locations(smpl_layer, pose_params, shape_params)
+    joint_locations = torch.cat([joint_locations, nose.unsqueeze(0)], dim=0)
+
 
     numbers = []
     for row in joint_locations:

@@ -11,6 +11,8 @@
 #include <ctime>
 #include <Python.h>
 #include <math.h>
+#include <cstdlib>
+#include <ctime>
 
 using json = nlohmann::json;
 using namespace Eigen;
@@ -20,7 +22,9 @@ bool eval = 0;
 double L2_Regularization_Lambda = 0.1;
 Vector2d root_trans_global;
 
-Eigen::Matrix<double, 24, 3> jointPositions;
+double global_Parameters[73];
+
+Eigen::Matrix<double, 25, 3> jointPositions; // 24 SMPL joints + nose
 struct Keypoint {
     float x, y, confidence;
 };
@@ -33,6 +37,7 @@ struct CameraParams {
 };
 CameraParams camParams;
 
+
 std::string arrayToString(const double* array, int size) {
     std::string result;
     for (int i = 0; i < size; ++i) {
@@ -43,7 +48,7 @@ std::string arrayToString(const double* array, int size) {
     return result;
 }
 
-Eigen::Matrix<double, 24, 3> parseJointPosition(std::string str)
+Eigen::Matrix<double, 25, 3> parseJointPosition(std::string str)
 {
     std::vector<double> values;
     std::stringstream ss(str);
@@ -68,9 +73,9 @@ Eigen::Matrix<double, 24, 3> parseJointPosition(std::string str)
             std::cerr << "Expected ']' at the end of the input string." << std::endl;
         }
     }
-    Eigen::Matrix<double, 24, 3> matrix;
+    Eigen::Matrix<double, 25, 3> matrix;
     int idx = 0;
-    for (int i = 0; i < 24; ++i) {
+    for (int i = 0; i < 25; ++i) {
         for (int j = 0; j < 3; ++j) {
             // matrix(i, j) = values[idx++]/2 + 0.5;
             matrix(i, j) = values[idx++] / 2;
@@ -79,7 +84,7 @@ Eigen::Matrix<double, 24, 3> parseJointPosition(std::string str)
     return matrix;
 }
 
-Eigen::Matrix<double, 24, 3> CalculateJointPosition(const double* poseParameters, const double* shapeParameters)
+Eigen::Matrix<double, 25, 3> CalculateJointPosition(const double* poseParameters, const double* shapeParameters)
 {
     std::string poseparams;
     std::string shapeparams;
@@ -108,7 +113,6 @@ Eigen::Matrix<double, 24, 3> CalculateJointPosition(const double* poseParameters
     const char* outputStr = PyUnicode_AsUTF8(output);
     std::string cppOutput(outputStr);
     PyObject_SetAttrString(sysModule, "stdout", originalStdout);
-
     return parseJointPosition(cppOutput);
 }
 
@@ -120,11 +124,11 @@ struct SmplCostFunctor {
     bool operator()(const double* const parameters, double* residuals) const {
         // working on figuring out wrong head matching, see fit_3D.py in SMPLify
         
-        // int OpenPoseMapping[14] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
-        // int SMPLMapping[14] = { 12, 17, 19, 21, 16, 18, 20, 0, 2, 5, 8, 1, 4, 7 };
-        int OpenPoseMapping[13] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
-        int SMPLMapping[13] = {17, 19, 21, 16, 18, 20, 0, 2, 5, 8, 1, 4, 7 };
-        for (int i = 0; i < 18; i++)
+        int OpenPoseMapping[14] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
+        int SMPLMapping[14] = { 12, 17, 19, 21, 16, 18, 20, 0, 2, 5, 8, 1, 4, 7 };
+        // int OpenPoseMapping[15] = { 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 1 };
+        // int SMPLMapping[15] = { 24, 17, 19, 21, 16, 18, 20, 0, 2, 5, 8, 1, 4, 7, 12 };
+        for (int i = 0; i < 19; i++)
         {
             residuals[i] = 0;
         }
@@ -137,14 +141,17 @@ struct SmplCostFunctor {
                 residuals[16] += 500.0;
             }
         }
-
-        jointPositions = CalculateJointPosition(parameters, parameters + 72);
+        // test
+        double shapeParameters[10] = { 0 };
+        shapeParameters[0] = parameters[72];
+        // jointPositions = CalculateJointPosition(parameters, parameters + 72);
+        jointPositions = CalculateJointPosition(parameters, shapeParameters);
         Vector3d jointPosition3D_root = jointPositions.row(SMPLMapping[7]);
         Vector3d projected_root = camParams_.intrinsicMatrix.cast<double>() * (camParams_.rotationMatrix.cast<double>() * jointPosition3D_root + camParams_.translation.cast<double>());
         Vector2d jointPosition2D_root(projected_root(0) / projected_root(2), projected_root(1) / projected_root(2));
         Vector2d root_trans = { keypoints_[OpenPoseMapping[7]].x - jointPosition2D_root.x() , keypoints_[OpenPoseMapping[7]].y - jointPosition2D_root.y() };
         root_trans_global = root_trans;
-        for (int i = 0; i < 13; i++)
+        for (int i = 0; i < 14; i++)
         {
             Vector3d jointPosition3D = jointPositions.row(SMPLMapping[i]);
             Vector3d projected = camParams_.intrinsicMatrix.cast<double>() * (camParams_.rotationMatrix.cast<double>() * jointPosition3D + camParams_.translation.cast<double>());
@@ -159,7 +166,11 @@ struct SmplCostFunctor {
             }
             // residuals[0] += keypoints_[OpenPoseMapping[i]].confidence * sqrt((jointPosition2D.x() - keypoints_[OpenPoseMapping[i]].x) * (jointPosition2D.x() - keypoints_[OpenPoseMapping[i]].x) + (jointPosition2D.y() - keypoints_[OpenPoseMapping[i]].y) * (jointPosition2D.y() - keypoints_[OpenPoseMapping[i]].y));
             residuals[i] += keypoints_[OpenPoseMapping[i]].confidence * sqrt((jointPosition2D.x() - keypoints_[OpenPoseMapping[i]].x) * (jointPosition2D.x() - keypoints_[OpenPoseMapping[i]].x) + (jointPosition2D.y() - keypoints_[OpenPoseMapping[i]].y) * (jointPosition2D.y() - keypoints_[OpenPoseMapping[i]].y));
-            
+            if (OpenPoseMapping[i] == 11 || OpenPoseMapping[i] == 14)
+            {
+                // more weight on ankles
+                // residuals[i] += keypoints_[OpenPoseMapping[i]].confidence * sqrt((jointPosition2D.x() - keypoints_[OpenPoseMapping[i]].x) * (jointPosition2D.x() - keypoints_[OpenPoseMapping[i]].x) + (jointPosition2D.y() - keypoints_[OpenPoseMapping[i]].y) * (jointPosition2D.y() - keypoints_[OpenPoseMapping[i]].y));
+            }
         }
 
         // left toe
@@ -171,7 +182,7 @@ struct SmplCostFunctor {
         double kpx = (keypoints_[19].x + keypoints_[20].x) / 2;
         double kpy = (keypoints_[19].y + keypoints_[20].y) / 2;
         double kpc = (keypoints_[19].confidence + keypoints_[20].confidence) / 2;
-        residuals[14] += kpc * sqrt((jointPosition2Dt.x() - kpx) * (jointPosition2Dt.x() - kpx) + (jointPosition2Dt.y() - kpy) * (jointPosition2Dt.y() - kpy));
+        residuals[18] += kpc * sqrt((jointPosition2Dt.x() - kpx) * (jointPosition2Dt.x() - kpx) + (jointPosition2Dt.y() - kpy) * (jointPosition2Dt.y() - kpy));
         if (eval)
         {
             std::cout << "left toe" << std::endl;
@@ -216,6 +227,78 @@ struct SmplCostFunctor {
                 residuals[17] += alpha * exp(theta);
             }
         }
+        return true;
+    }
+
+    std::vector<Keypoint> keypoints_;
+    CameraParams camParams_;
+};
+
+struct HipsCostFunctor {
+    HipsCostFunctor(const std::vector<Keypoint>& keypoints, const CameraParams& camParams)
+        : keypoints_(keypoints), camParams_(camParams){}
+
+    bool operator()(const double* const parameters, double* residuals) const {
+        // working on figuring out wrong head matching, see fit_3D.py in SMPLify
+
+        int OpenPoseMapping[14] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
+        int SMPLMapping[14] = { 12, 17, 19, 21, 16, 18, 20, 0, 2, 5, 8, 1, 4, 7 };
+        // int OpenPoseMapping[15] = { 0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 1 };
+        // int SMPLMapping[15] = { 24, 17, 19, 21, 16, 18, 20, 0, 2, 5, 8, 1, 4, 7, 12 };
+        for (int i = 0; i < 2; i++)
+        {
+            residuals[i] = 0;
+        }
+
+        // test
+        double shapeParameters[10] = { 0 };
+        shapeParameters[0] = parameters[72];
+        // jointPositions = CalculateJointPosition(parameters, parameters + 72);
+        jointPositions = CalculateJointPosition(parameters, shapeParameters);
+        Vector3d jointPosition3D_root = jointPositions.row(SMPLMapping[7]);
+        Vector3d projected_root = camParams_.intrinsicMatrix.cast<double>() * (camParams_.rotationMatrix.cast<double>() * jointPosition3D_root + camParams_.translation.cast<double>());
+        Vector2d jointPosition2D_root(projected_root(0) / projected_root(2), projected_root(1) / projected_root(2));
+        Vector2d root_trans = { keypoints_[OpenPoseMapping[7]].x - jointPosition2D_root.x() , keypoints_[OpenPoseMapping[7]].y - jointPosition2D_root.y() };
+        root_trans_global = root_trans;
+
+        // left toe
+        Vector3d jointPosition3Dt = jointPositions.row(SMPLMapping[10]);
+        Vector3d projectedt = camParams_.intrinsicMatrix.cast<double>() * (camParams_.rotationMatrix.cast<double>() * jointPosition3Dt + camParams_.translation.cast<double>());
+        Vector2d jointPosition2Dt(projectedt(0) / projectedt(2), projectedt(1) / projectedt(2));
+        jointPosition2Dt.x() += root_trans.x();
+        jointPosition2Dt.y() += root_trans.y();
+        double kpx = (keypoints_[19].x + keypoints_[20].x) / 2;
+        double kpy = (keypoints_[19].y + keypoints_[20].y) / 2;
+        double kpc = (keypoints_[19].confidence + keypoints_[20].confidence) / 2;
+        residuals[0] += 2 * sqrt((jointPosition2Dt.x() - kpx) * (jointPosition2Dt.x() - kpx) + (jointPosition2Dt.y() - kpy) * (jointPosition2Dt.y() - kpy));
+        // residuals[0] += 2 * (jointPosition2Dt.x() - kpx) * (jointPosition2Dt.x() - kpx);
+        if (!eval)
+        {
+            std::cout << "left toe" << std::endl;
+            std::cout << "Joint Position 2D: " << jointPosition2Dt.transpose() << std::endl;
+            std::cout << "GT: " << kpx << " " << kpy << std::endl;
+        }
+
+
+        // right toe
+        jointPosition3Dt = jointPositions.row(SMPLMapping[11]);
+        projectedt = camParams_.intrinsicMatrix.cast<double>() * (camParams_.rotationMatrix.cast<double>() * jointPosition3Dt + camParams_.translation.cast<double>());
+        jointPosition2Dt(projectedt(0) / projectedt(2), projectedt(1) / projectedt(2));
+        jointPosition2Dt.x() += root_trans.x();
+        jointPosition2Dt.y() += root_trans.y();
+        kpx = (keypoints_[22].x + keypoints_[23].x) / 2;
+        kpy = (keypoints_[22].y + keypoints_[23].y) / 2;
+        kpc = (keypoints_[22].confidence + keypoints_[23].confidence) / 2;
+        residuals[1] += 2 * sqrt((jointPosition2Dt.x() - kpx) * (jointPosition2Dt.x() - kpx) + (jointPosition2Dt.y() - kpy) * (jointPosition2Dt.y() - kpy));
+        // residuals[1] += 2 * (jointPosition2Dt.x() - kpx) * (jointPosition2Dt.x() - kpx);
+        if (!eval)
+        {
+            std::cout << "right toe" << std::endl;
+            std::cout << "Joint Position 2D: " << jointPosition2Dt.transpose() << std::endl;
+            std::cout << "GT: " << kpx << " " << kpy << std::endl;
+        }
+
+        
         return true;
     }
 
@@ -270,26 +353,46 @@ int main() {
 
     vector<Keypoint> keypoints = ParseKeypoints(jsonInput);
     Problem problem;
-    double Parameters[82] = {0}; // 72 pose params + 10 shape params
+    srand(static_cast <unsigned> (time(0)));
+    
+    // double Parameters[82] = {0}; // 72 pose params + 10 shape params
+    double Parameters[73] = {0}; // 72 pose params + first shape param
+    for (int i = 0; i < 72; i++)
+    {
+        // Parameters[i] = -0.1 + static_cast <double> (rand()) / (static_cast <double> (RAND_MAX / (0.2)));
+        // cout << Parameters[i] << endl;
+    }
+    // double Parameters[73] = { -0.0776407,0.00484453,0.010599,0.179969,-0.169484,0.101799,0.162619,0.0555054,-0.0891914,-0.190091,0.0404299,-0.035251,0.0265726,-1.42267,0.0212773,0.0674557,1.41078,0.0403866,-0.186953,0.0184656,-0.0161024,0,0,0,0,0,0,-0.18683,0.00231426,0.00341318,0,0,0,0,0,0,0,0,0,0.401941,0.326392,-0.17685,-0.096041,-0.323272,-0.0870878,0,0,0,-0.631725,0.454499,-0.446829,0.483115,-0.609692,0.636811,-0.103335,0.283711,0.0363246,-0.127691,-0.025355,0.349959,0,0,0,0,0,0,0,0,0,0,0,0,15.7047 };
     Parameters[72] = 15;
+    double shapeParameters[10] = { 0 };
+    shapeParameters[0] = Parameters[72];
+    // double poseParameters[72] = { 0 };
     PyRun_SimpleString("import os");
     PyRun_SimpleString("os.chdir('../data/model/')");
     eval = 0;
-    jointPositions = CalculateJointPosition(Parameters, Parameters+72);
-
+    // jointPositions = CalculateJointPosition(Parameters, Parameters+72);
+    jointPositions = CalculateJointPosition(Parameters, shapeParameters);
     ceres::NumericDiffOptions numeric_diff_options;
     numeric_diff_options.relative_step_size = 0.01;
-    CostFunction* cost_function = new NumericDiffCostFunction<SmplCostFunctor, RIDDERS, 18, 82>(
+    CostFunction* cost_function = new NumericDiffCostFunction<SmplCostFunctor, RIDDERS, 19, 73>(
         new SmplCostFunctor(keypoints, camParams), TAKE_OWNERSHIP);
     problem.AddResidualBlock(cost_function, nullptr, Parameters);
+    
+    
+    // try optimizing hips rotation
+    //CostFunction* hips_cost_function = new NumericDiffCostFunction<HipsCostFunctor, RIDDERS, 2, 73>(
+        //new HipsCostFunctor(keypoints, camParams), TAKE_OWNERSHIP);
+    //problem.AddResidualBlock(hips_cost_function, nullptr, Parameters);
+
 
     Solver::Options options;
     options.linear_solver_type = DENSE_QR;
     options.minimizer_progress_to_stdout = true;
     options.num_threads = 32;
-    options.max_solver_time_in_seconds = 1200;
+    options.max_solver_time_in_seconds = 1000;
     options.trust_region_strategy_type = ceres::DOGLEG;
     options.dense_linear_algebra_library_type = ceres::CUDA;
+    options.max_num_iterations = 30;
     Solver::Summary summary;
 
     ceres::Solve(options, &problem, &summary);
@@ -297,11 +400,15 @@ int main() {
 
     eval = 1;
 
+    int OpenPoseMapping[15] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 0 };
+    int SMPLMapping[15] = { 12, 17, 19, 21, 16, 18, 20, 0, 2, 5, 8, 1, 4, 7, 24 };
+    // jointPositions = CalculateJointPosition(Parameters, Parameters + 72);
+    jointPositions = CalculateJointPosition(Parameters, shapeParameters);
 
-    int OpenPoseMapping[14] = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
-    int SMPLMapping[14] = { 12, 17, 19, 21, 16, 18, 20, 0, 2, 5, 8, 1, 4, 7 };
-    jointPositions = CalculateJointPosition(Parameters, Parameters + 72);
-    for (int i = 0; i < 14; i++)
+    cout << "3D joint Positions" << endl << jointPositions << endl;
+    cout << "( The No.24 joint 'Nose' is manually added )" << endl;
+
+    for (int i = 0; i < 15; i++)
     {
         Vector3d jointPosition3D = jointPositions.row(SMPLMapping[i]);
         Vector3d projected = camParams.intrinsicMatrix.cast<double>() * (camParams.rotationMatrix.cast<double>() * jointPosition3D + camParams.translation.cast<double>());
@@ -316,20 +423,55 @@ int main() {
         }
     }
 
+    Vector3d jointPosition3Dt = jointPositions.row(SMPLMapping[10]);
+    Vector3d projectedt = camParams.intrinsicMatrix.cast<double>() * (camParams.rotationMatrix.cast<double>() * jointPosition3Dt + camParams.translation.cast<double>());
+    Vector2d jointPosition2Dt(projectedt(0) / projectedt(2), projectedt(1) / projectedt(2));
+    jointPosition2Dt.x() += root_trans_global.x();
+    jointPosition2Dt.y() += root_trans_global.y();
+    double kpx = (keypoints[19].x + keypoints[20].x) / 2;
+    double kpy = (keypoints[19].y + keypoints[20].y) / 2;
+    double kpc = (keypoints[19].confidence + keypoints[20].confidence) / 2;
+    if (eval)
+    {
+        std::cout << "left toe" << std::endl;
+        std::cout << "Joint Position 2D: " << jointPosition2Dt.transpose() << std::endl;
+        std::cout << "GT: " << kpx << " " << kpy << std::endl;
+    }
+
+
+    // right toe
+    jointPosition3Dt = jointPositions.row(SMPLMapping[11]);
+    projectedt = camParams.intrinsicMatrix.cast<double>() * (camParams.rotationMatrix.cast<double>() * jointPosition3Dt + camParams.translation.cast<double>());
+    jointPosition2Dt(projectedt(0) / projectedt(2), projectedt(1) / projectedt(2));
+    jointPosition2Dt.x() += root_trans_global.x();
+    jointPosition2Dt.y() += root_trans_global.y();
+    kpx = (keypoints[22].x + keypoints[23].x) / 2;
+    kpy = (keypoints[22].y + keypoints[23].y) / 2;
+    kpc = (keypoints[22].confidence + keypoints[23].confidence) / 2;
+    if (eval)
+    {
+        std::cout << "right toe" << std::endl;
+        std::cout << "Joint Position 2D: " << jointPosition2Dt.transpose() << std::endl;
+        std::cout << "GT: " << kpx << " " << kpy << std::endl;
+    }
+
     cout << "Pose parameter :" << endl;
     for (int i = 0; i < 72; ++i) {
         cout << Parameters[i];
         if (i != 71) cout << ",";
     }
     cout << endl << "Shape parameter :";
-    for (int i = 72; i < 82; i++)
+    shapeParameters[0] = Parameters[72];
+    for (int i = 0; i < 10; i++)
     {
-        cout << Parameters[i];
-        if (i != 81) cout << ",";
+        cout << shapeParameters[i];
+        if (i != 9) cout << ",";
     }
     cout << endl << "Model root translation: " << root_trans_global.x() << "," << root_trans_global.y() << endl;
 
-    cout << endl;
+
+
+    cout << "20" << endl;
     if (Py_FinalizeEx() < 0) {
         exit(120);
     }
